@@ -43,8 +43,8 @@ const communityLinks: ResourceLink[] = [
     icon: Trophy,
   },
   {
-    title: "DnA 포럼 체크인",
-    description: "DnA 포럼에 출석하고 스토어 포인트도 받기",
+    title: "포럼 스탬프",
+    description: "Director & Ambassador 대상 : DnA 포럼에 출석하고 스토어 포인트는 덤 !",
     url: "https://www.checkin-bnikorea.com/",
     icon: CheckCircle,
   },
