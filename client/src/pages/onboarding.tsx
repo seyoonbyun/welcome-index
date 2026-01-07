@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, Info, ShoppingBag, UserPlus, CheckCircle } from "lucide-react";
+import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, Info, ShoppingBag, UserPlus, CheckCircle, MapPin } from "lucide-react";
 
 interface ResourceLink {
   title: string;
@@ -98,6 +98,12 @@ const officialChannels: ResourceLink[] = [
     description: "BNI Korea 공식 페이스북",
     url: "https://facebook.com/bnikorea",
     icon: Facebook,
+  },
+  {
+    title: "본사 위치 안내",
+    description: "BNI Korea 본사 오시는 길",
+    url: "https://map.naver.com/p/directions/-/14142748.3697468,4515149.9521428,%EB%B9%84%EC%97%94%EC%95%84%EC%9D%B4%EC%BD%94%EB%A6%AC%EC%95%84,1797861143,PLACE_POI/-/transit?c=15.00,0,0,0,dh",
+    icon: MapPin,
   },
 ];
 
