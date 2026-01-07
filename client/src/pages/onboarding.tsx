@@ -54,12 +54,6 @@ const communityLinks: ResourceLink[] = [
     url: "https://hub-bnikorea.com/invitation",
     icon: UserPlus,
   },
-  {
-    title: "멤버 지원 창구",
-    description: "카카오톡으로 문의사항을 남겨주세요",
-    url: "http://pf.kakao.com/_xewxmrT",
-    icon: MessageCircle,
-  },
 ];
 
 const officialChannels: ResourceLink[] = [
@@ -98,6 +92,15 @@ const officialChannels: ResourceLink[] = [
     description: "BNI Korea 공식 페이스북",
     url: "https://facebook.com/bnikorea",
     icon: Facebook,
+  },
+];
+
+const memberSupportLinks: ResourceLink[] = [
+  {
+    title: "멤버 지원 창구",
+    description: "카카오톡으로 문의사항을 남겨주세요",
+    url: "http://pf.kakao.com/_xewxmrT",
+    icon: MessageCircle,
   },
   {
     title: "본사 위치 안내",
@@ -294,6 +297,7 @@ export default function OnboardingPage() {
           <PowerTeamWorkflowSection />
           <CategorySection title="커뮤니티 & 챌린지" links={communityLinks} />
           <CategorySection title="공식 채널" links={officialChannels} />
+          <CategorySection title="멤버 지원" links={memberSupportLinks} />
         </main>
 
         <footer className="mt-16 pt-8 border-t border-border">
