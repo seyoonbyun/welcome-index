@@ -37,8 +37,8 @@ const communityLinks: ResourceLink[] = [
     icon: Trophy,
   },
   {
-    title: "GBC 챌린지",
-    description: "GBC 챌린지에 참여하세요",
+    title: "GBC : G글로벌 B즈니스 C위원회",
+    description: "Global Business Commitee",
     url: "https://www.gbc-bnikorea.com/",
     icon: Trophy,
   },
