@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, Info, ShoppingBag, UserPlus } from "lucide-react";
+import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, Info, ShoppingBag, UserPlus, CheckCircle } from "lucide-react";
 
 interface ResourceLink {
   title: string;
@@ -41,6 +41,12 @@ const communityLinks: ResourceLink[] = [
     description: "GBC 챌린지에 참여하세요",
     url: "https://www.gbc-bnikorea.com/",
     icon: Trophy,
+  },
+  {
+    title: "DnA 포럼 체크인",
+    description: "DnA 포럼에 출석하고 스토어 포인트도 받기",
+    url: "https://www.checkin-bnikorea.com/",
+    icon: CheckCircle,
   },
   {
     title: "온라인 챕터 초대장",
