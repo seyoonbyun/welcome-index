@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
-import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2 } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, Info } from "lucide-react";
 
 interface ResourceLink {
   title: string;
@@ -13,104 +14,72 @@ interface ResourceCategory {
   links: ResourceLink[];
 }
 
-const resourceCategories: ResourceCategory[] = [
+const essentialSystems: ResourceLink[] = [
   {
-    title: "필수 시스템",
-    links: [
-      {
-        title: "멤버십비 결제",
-        description: "BNI 멤버십 비용을 안전하게 결제하세요",
-        url: "https://pay.bnikorea.com/",
-        icon: CreditCard,
-      },
-      {
-        title: "BNI Connect Global",
-        description: "글로벌 멤버십 커넥트 시스템에 로그인하세요",
-        url: "https://www.bniconnectglobal.com/login/?message=",
-        icon: Globe,
-      },
-    ],
+    title: "멤버십비 결제",
+    description: "BNI 멤버십 비용을 안전하게 결제하세요",
+    url: "https://pay.bnikorea.com/",
+    icon: CreditCard,
   },
   {
-    title: "비즈니스 도구",
-    links: [
-      {
-        title: "PowerTeam Toolkit",
-        description: "플랫폼 멤버 전용 툴킷을 확인하세요",
-        url: "https://www.powerteam-bnikorea.com/PowerTeamToolkit",
-        icon: Wrench,
-      },
-      {
-        title: "RPI 데이터 뷰어",
-        description: "툴킷 입력 후 데이터를 확인할 수 있는 뷰어",
-        url: "https://www.powerteam-bnikorea.com/RPI2%EB%B2%88",
-        icon: BarChart3,
-      },
-      {
-        title: "비즈니스 트레이닝",
-        description: "트레이닝 프로그램을 확인하고 참여하세요",
-        url: "https://www.hub-bnikorea.com/BusinessTraining",
-        icon: GraduationCap,
-      },
-    ],
+    title: "BNI Connect Global",
+    description: "글로벌 멤버십 커넥트 시스템에 로그인하세요",
+    url: "https://www.bniconnectglobal.com/login/?message=",
+    icon: Globe,
+  },
+];
+
+const communityLinks: ResourceLink[] = [
+  {
+    title: "Guardian 챌린지",
+    description: "진행 중인 챌린지를 확인하고 참여하세요",
+    url: "https://www.guardian-bnikorea.com/",
+    icon: Trophy,
   },
   {
-    title: "커뮤니티 & 챌린지",
-    links: [
-      {
-        title: "Guardian 챌린지",
-        description: "진행 중인 챌린지를 확인하고 참여하세요",
-        url: "https://www.guardian-bnikorea.com/",
-        icon: Trophy,
-      },
-      {
-        title: "멤버 지원 창구",
-        description: "카카오톡으로 문의사항을 남겨주세요",
-        url: "http://pf.kakao.com/_xewxmrT",
-        icon: MessageCircle,
-      },
-    ],
+    title: "멤버 지원 창구",
+    description: "카카오톡으로 문의사항을 남겨주세요",
+    url: "http://pf.kakao.com/_xewxmrT",
+    icon: MessageCircle,
+  },
+];
+
+const officialChannels: ResourceLink[] = [
+  {
+    title: "YouTube",
+    description: "BNI Korea 공식 유튜브 채널",
+    url: "http://www.youtube.com/@bni2608",
+    icon: Youtube,
   },
   {
-    title: "공식 채널",
-    links: [
-      {
-        title: "YouTube",
-        description: "BNI Korea 공식 유튜브 채널",
-        url: "http://www.youtube.com/@bni2608",
-        icon: Youtube,
-      },
-      {
-        title: "Podcast",
-        description: "BNI Korea 공식 팟캐스트",
-        url: "https://podbbang.page.link/3XmXNUmqDrSQUieH8",
-        icon: Podcast,
-      },
-      {
-        title: "Instagram",
-        description: "BNI Korea 공식 인스타그램",
-        url: "https://www.instagram.com/bnikorea/#",
-        icon: Instagram,
-      },
-      {
-        title: "Facebook",
-        description: "BNI Korea 공식 페이스북",
-        url: "https://facebook.com/bnikorea",
-        icon: Facebook,
-      },
-      {
-        title: "BNI Korea 웹사이트",
-        description: "BNI Korea 공식 홈페이지",
-        url: "https://www.bnikorea.com",
-        icon: Building2,
-      },
-      {
-        title: "BNI Global",
-        description: "BNI 글로벌 공식 웹사이트",
-        url: "https://www.bni.com/",
-        icon: Globe,
-      },
-    ],
+    title: "Podcast",
+    description: "BNI Korea 공식 팟캐스트",
+    url: "https://podbbang.page.link/3XmXNUmqDrSQUieH8",
+    icon: Podcast,
+  },
+  {
+    title: "Instagram",
+    description: "BNI Korea 공식 인스타그램",
+    url: "https://www.instagram.com/bnikorea/#",
+    icon: Instagram,
+  },
+  {
+    title: "Facebook",
+    description: "BNI Korea 공식 페이스북",
+    url: "https://facebook.com/bnikorea",
+    icon: Facebook,
+  },
+  {
+    title: "BNI Korea 웹사이트",
+    description: "BNI Korea 공식 홈페이지",
+    url: "https://www.bnikorea.com",
+    icon: Building2,
+  },
+  {
+    title: "BNI Global",
+    description: "BNI 글로벌 공식 웹사이트",
+    url: "https://www.bni.com/",
+    icon: Globe,
   },
 ];
 
@@ -147,14 +116,124 @@ function ResourceCard({ link }: { link: ResourceLink }) {
   );
 }
 
-function CategorySection({ category }: { category: ResourceCategory }) {
+function PowerTeamWorkflowSection() {
   return (
     <section>
-      <h2 className="text-2xl font-semibold text-foreground mb-6" data-testid={`section-${category.title}`}>
-        {category.title}
+      <h2 className="text-2xl font-semibold text-foreground mb-6" data-testid="section-비즈니스-도구">
+        비즈니스 도구
+      </h2>
+      
+      <Card className="p-6 mb-6">
+        <div className="flex items-start gap-3 mb-6">
+          <Info className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+          <div>
+            <h3 className="font-medium text-foreground mb-1">PowerTeam 활동 기록 시스템</h3>
+            <p className="text-sm text-muted-foreground">
+              본인의 BNI 활동 성과를 기록하고, 나와 우리 챕터 전체의 기록을 확인할 수 있습니다. 아래 순서대로 이용해주세요.
+            </p>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <a
+            href="https://www.powerteam-bnikorea.com/PowerTeamToolkit"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
+            data-testid="link-powerteam-toolkit"
+          >
+            <div className="p-4 rounded-lg border border-border hover-elevate active-elevate-2 transition-all duration-200 h-full">
+              <div className="flex items-center gap-3 mb-3">
+                <Badge variant="secondary" className="text-xs font-medium">Step 1</Badge>
+                <span className="text-sm text-muted-foreground">기록하기</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
+                  <Wrench className="w-5 h-5 text-primary" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <h4 className="font-medium text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors">
+                      PowerTeam Toolkit
+                    </h4>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    본인의 활동 성과를 입력하고 기록하세요
+                  </p>
+                </div>
+              </div>
+            </div>
+          </a>
+          
+          <a
+            href="https://www.powerteam-bnikorea.com/RPI2%EB%B2%88"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
+            data-testid="link-rpi-데이터-뷰어"
+          >
+            <div className="p-4 rounded-lg border border-border hover-elevate active-elevate-2 transition-all duration-200 h-full">
+              <div className="flex items-center gap-3 mb-3">
+                <Badge variant="secondary" className="text-xs font-medium">Step 2</Badge>
+                <span className="text-sm text-muted-foreground">확인하기</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
+                  <BarChart3 className="w-5 h-5 text-primary" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <h4 className="font-medium text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors">
+                      RPI 데이터 뷰어
+                    </h4>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    나와 챕터 전체의 활동 기록을 확인하세요
+                  </p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        
+        <div className="flex items-center justify-center">
+          <a
+            href="https://www.powerteam-bnikorea.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-primary hover:underline focus:outline-none focus-visible:underline"
+            data-testid="link-powerteam-more"
+          >
+            PowerTeam 도구에 대해 자세히 알아보기
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+      </Card>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <ResourceCard
+          link={{
+            title: "비즈니스 트레이닝",
+            description: "트레이닝 프로그램을 확인하고 참여하세요",
+            url: "https://www.hub-bnikorea.com/BusinessTraining",
+            icon: GraduationCap,
+          }}
+        />
+      </div>
+    </section>
+  );
+}
+
+function CategorySection({ title, links }: { title: string; links: ResourceLink[] }) {
+  return (
+    <section>
+      <h2 className="text-2xl font-semibold text-foreground mb-6" data-testid={`section-${title}`}>
+        {title}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {category.links.map((link) => (
+        {links.map((link) => (
           <ResourceCard key={link.title} link={link} />
         ))}
       </div>
@@ -179,9 +258,10 @@ export default function OnboardingPage() {
         </header>
 
         <main className="space-y-12">
-          {resourceCategories.map((category) => (
-            <CategorySection key={category.title} category={category} />
-          ))}
+          <CategorySection title="필수 시스템" links={essentialSystems} />
+          <PowerTeamWorkflowSection />
+          <CategorySection title="커뮤니티 & 챌린지" links={communityLinks} />
+          <CategorySection title="공식 채널" links={officialChannels} />
         </main>
 
         <footer className="mt-16 pt-8 border-t border-border">
