@@ -37,6 +37,12 @@ const communityLinks: ResourceLink[] = [
     icon: Trophy,
   },
   {
+    title: "GBC 챌린지",
+    description: "GBC 챌린지에 참여하세요",
+    url: "https://www.gbc-bnikorea.com/",
+    icon: Trophy,
+  },
+  {
     title: "온라인 챕터 초대장",
     description: "지인을 BNI 미팅에 초대하세요",
     url: "https://hub-bnikorea.com/invitation",
