@@ -37,7 +37,7 @@ const communityLinks: ResourceLink[] = [
     icon: Trophy,
   },
   {
-    title: "초대장 보내기",
+    title: "온라인 챕터 초대장",
     description: "지인을 BNI 미팅에 초대하세요",
     url: "https://hub-bnikorea.com/invitation",
     icon: UserPlus,
