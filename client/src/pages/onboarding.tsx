@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, Info } from "lucide-react";
+import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, Info, ShoppingBag } from "lucide-react";
 
 interface ResourceLink {
   title: string;
@@ -219,6 +219,14 @@ function PowerTeamWorkflowSection() {
             description: "트레이닝 프로그램을 확인하고 참여하세요",
             url: "https://www.hub-bnikorea.com/BusinessTraining",
             icon: GraduationCap,
+          }}
+        />
+        <ResourceCard
+          link={{
+            title: "BNI 코리아 스토어",
+            description: "BNI 공식 굿즈와 상품을 구매하세요",
+            url: "https://www.bnikoreastore.com/",
+            icon: ShoppingBag,
           }}
         />
       </div>
