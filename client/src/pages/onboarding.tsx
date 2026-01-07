@@ -46,6 +46,18 @@ const communityLinks: ResourceLink[] = [
 
 const officialChannels: ResourceLink[] = [
   {
+    title: "BNI Korea 웹사이트",
+    description: "BNI Korea 공식 홈페이지",
+    url: "https://www.bnikorea.com",
+    icon: Building2,
+  },
+  {
+    title: "BNI Global",
+    description: "BNI 글로벌 공식 웹사이트",
+    url: "https://www.bni.com/",
+    icon: Globe,
+  },
+  {
     title: "YouTube",
     description: "BNI Korea 공식 유튜브 채널",
     url: "http://www.youtube.com/@bni2608",
@@ -68,18 +80,6 @@ const officialChannels: ResourceLink[] = [
     description: "BNI Korea 공식 페이스북",
     url: "https://facebook.com/bnikorea",
     icon: Facebook,
-  },
-  {
-    title: "BNI Korea 웹사이트",
-    description: "BNI Korea 공식 홈페이지",
-    url: "https://www.bnikorea.com",
-    icon: Building2,
-  },
-  {
-    title: "BNI Global",
-    description: "BNI 글로벌 공식 웹사이트",
-    url: "https://www.bni.com/",
-    icon: Globe,
   },
 ];
 
