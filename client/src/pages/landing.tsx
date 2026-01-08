@@ -53,7 +53,7 @@ export default function LandingPage() {
                   : "scale-75 opacity-0"
               }`}
               style={{
-                top: "18%",
+                top: "14%",
                 left: "20%",
                 width: "10%",
                 height: "14%",
