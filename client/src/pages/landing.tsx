@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import welcomeImage from "@assets/a_1767856008937.png";
+import welcomeImage from "@assets/welcomepack_1767856938329.png";
 
 export default function LandingPage() {
   return (
