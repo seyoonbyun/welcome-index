@@ -53,10 +53,10 @@ export default function LandingPage() {
                   : "scale-75 opacity-0"
               }`}
               style={{
-                top: "20%",
-                left: "20%",
-                width: "10%",
-                height: "14%",
+                top: "12%",
+                left: "17%",
+                width: "9%",
+                height: "11%",
               }}
               data-testid="link-qr-onboarding"
             >
