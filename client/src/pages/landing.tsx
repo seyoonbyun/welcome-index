@@ -4,13 +4,39 @@ import welcomeImage from "@assets/welcome-pack-final_1767864745093.png";
 
 export default function LandingPage() {
   const [showQrHighlight, setShowQrHighlight] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
     const timer = setTimeout(() => {
       setShowQrHighlight(true);
     }, 500);
-    return () => clearTimeout(timer);
+    
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
+
+  const qrStyle = isMobile 
+    ? {
+        top: "19%",
+        left: "19.5%",
+        width: "10.3%",
+        height: "11%",
+      }
+    : {
+        top: "22%",
+        left: "20.7%",
+        width: "8.3%",
+        height: "11%",
+      };
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4 py-8">
@@ -52,12 +78,7 @@ export default function LandingPage() {
                   ? "scale-100 opacity-100" 
                   : "scale-75 opacity-0"
               }`}
-              style={{
-                top: "22%",
-                left: "20.7%",
-                width: "8.3%",
-                height: "11%",
-              }}
+              style={qrStyle}
               data-testid="link-qr-onboarding"
             >
               <div 
