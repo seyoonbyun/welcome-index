@@ -50,20 +50,23 @@ export default function LandingPage() {
               className={`absolute cursor-pointer transition-all duration-700 ease-out ${
                 showQrHighlight 
                   ? "scale-100 opacity-100" 
-                  : "scale-50 opacity-0"
+                  : "scale-75 opacity-0"
               }`}
               style={{
-                top: "8%",
-                left: "18%",
-                width: "12%",
-                height: "18%",
+                top: "5%",
+                left: "16%",
+                width: "14%",
+                height: "22%",
               }}
               data-testid="link-qr-onboarding"
             >
               <div 
-                className={`w-full h-full rounded-lg border-4 border-primary bg-primary/10 flex items-center justify-center transition-all duration-300 hover:bg-primary/20 hover:border-primary/80 ${
+                className={`w-full h-full rounded-lg border-4 border-primary transition-all duration-300 hover:border-primary/80 ${
                   showQrHighlight ? "animate-pulse" : ""
                 }`}
+                style={{
+                  boxShadow: "0 0 20px 4px hsl(var(--primary) / 0.4), 0 0 40px 8px hsl(var(--primary) / 0.2)",
+                }}
               >
                 <span className="sr-only">온보딩 페이지로 이동</span>
               </div>
