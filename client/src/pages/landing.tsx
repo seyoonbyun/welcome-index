@@ -56,7 +56,7 @@ export default function LandingPage() {
                 top: "22%",
                 left: "21%",
                 width: "8%",
-                height: "10%",
+                height: "11%",
               }}
               data-testid="link-qr-onboarding"
             >
