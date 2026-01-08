@@ -54,7 +54,7 @@ export default function LandingPage() {
               }`}
               style={{
                 top: "22%",
-                left: "19%",
+                left: "21%",
                 width: "8%",
                 height: "10%",
               }}
