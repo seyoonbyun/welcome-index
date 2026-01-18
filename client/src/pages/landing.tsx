@@ -24,19 +24,12 @@ export default function LandingPage() {
     };
   }, []);
 
-  const qrStyle = isMobile 
-    ? {
-        top: "19.4%",
-        left: "20.0%",
-        width: "9.7%",
-        height: "11.0%",
-      }
-    : {
-        top: "22%",
-        left: "20.7%",
-        width: "8.3%",
-        height: "11%",
-      };
+  const qrStyle = {
+    top: "19.4%",
+    left: "20.0%",
+    width: "9.7%",
+    height: "11.0%",
+  };
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4 py-8">
@@ -49,19 +42,19 @@ export default function LandingPage() {
           QR 코드를 클릭하여 온보딩 리소스를 확인하세요
         </p>
         
-        <div className="relative inline-block">
+        <div className="relative inline-block w-full max-w-3xl">
           <a 
             href="https://welcomepack-i49t.vercel.app/" 
             target="_blank" 
             rel="noopener noreferrer"
             data-testid="link-to-welcomepack"
           >
-            <div className="group cursor-pointer inline-block">
+            <div className="group cursor-pointer w-full">
               <div className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-xl group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2">
                 <img
                   src={welcomeImage}
                   alt="BNI Korea 웰컴 키트 구성"
-                  className="w-full h-auto max-w-3xl"
+                  className="w-full h-auto"
                   data-testid="img-welcome"
                 />
               </div>
