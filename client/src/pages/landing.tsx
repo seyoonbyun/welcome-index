@@ -24,12 +24,19 @@ export default function LandingPage() {
     };
   }, []);
 
-  const qrStyle = {
-    top: "19.4%",
-    left: "20.0%",
-    width: "9.7%",
-    height: "11.0%",
-  };
+  const qrStyle = isMobile 
+    ? {
+        top: "19.4%",
+        left: "20.0%",
+        width: "9.7%",
+        height: "11.0%",
+      }
+    : {
+        top: "22%",
+        left: "20.7%",
+        width: "8.3%",
+        height: "11%",
+      };
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4 py-8">
