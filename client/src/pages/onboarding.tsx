@@ -146,7 +146,7 @@ function ResourceCard({ link }: { link: ResourceLink }) {
 function PowerTeamWorkflowSection() {
   return (
     <section>
-      <h2 className="text-2xl font-semibold text-foreground mb-6" data-testid="section-비즈니스-도구">
+      <h2 className="text-2xl font-semibold text-foreground mb-6 text-center md:text-left" data-testid="section-비즈니스-도구">
         비즈니스 도구
       </h2>
       
@@ -264,7 +264,7 @@ function PowerTeamWorkflowSection() {
 function CategorySection({ title, links }: { title: string; links: ResourceLink[] }) {
   return (
     <section>
-      <h2 className="text-2xl font-semibold text-foreground mb-6" data-testid={`section-${title}`}>
+      <h2 className="text-2xl font-semibold text-foreground mb-6 text-center md:text-left" data-testid={`section-${title}`}>
         {title}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
