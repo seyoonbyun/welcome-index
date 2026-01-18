@@ -49,19 +49,19 @@ export default function LandingPage() {
           QR 코드를 클릭하여 온보딩 리소스를 확인하세요
         </p>
         
-        <div className="relative inline-block w-full max-w-3xl">
+        <div className="relative inline-block w-fit mx-auto">
           <a 
             href="https://welcomepack-i49t.vercel.app/" 
             target="_blank" 
             rel="noopener noreferrer"
             data-testid="link-to-welcomepack"
           >
-            <div className="group cursor-pointer w-full">
+            <div className="group cursor-pointer">
               <div className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-xl group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2">
                 <img
                   src={welcomeImage}
                   alt="BNI Korea 웰컴 키트 구성"
-                  className="w-full h-auto"
+                  className="w-full h-auto max-w-[90vw] md:max-w-3xl block"
                   data-testid="img-welcome"
                 />
               </div>
@@ -74,7 +74,7 @@ export default function LandingPage() {
           
     <Link href="/onboarding">
       <div 
-        className={`absolute cursor-pointer transition-all duration-700 ease-out flex items-center justify-center ${
+        className={`absolute cursor-pointer transition-all duration-700 ease-out flex items-center justify-center z-50 ${
           showQrHighlight 
             ? "scale-100 opacity-100" 
             : "scale-75 opacity-0"
