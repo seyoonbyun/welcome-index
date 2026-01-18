@@ -72,26 +72,26 @@ export default function LandingPage() {
             </div>
           </a>
           
-          <Link href="/onboarding">
-            <div 
-              className={`absolute cursor-pointer transition-all duration-700 ease-out ${
-                showQrHighlight 
-                  ? "scale-100 opacity-100" 
-                  : "scale-75 opacity-0"
-              }`}
-              style={qrStyle}
-              data-testid="link-qr-onboarding"
-            >
-              <div 
-                className={`w-full h-full rounded-lg border-4 border-[#2171b5] transition-all duration-300 hover:border-[#2171b5]/80 ${
-                  showQrHighlight ? "animate-pulse" : ""
-                }`}
-                style={{
-                  boxShadow: "0 0 20px 4px rgba(33, 113, 181, 0.4), 0 0 40px 8px rgba(33, 113, 181, 0.2)",
-                }}
-              >
-                <span className="sr-only">온보딩 페이지로 이동</span>
-              </div>
+    <Link href="/onboarding">
+      <div 
+        className={`absolute cursor-pointer transition-all duration-700 ease-out flex items-center justify-center ${
+          showQrHighlight 
+            ? "scale-100 opacity-100" 
+            : "scale-75 opacity-0"
+        }`}
+        style={qrStyle}
+        data-testid="link-qr-onboarding"
+      >
+        <div 
+          className={`w-full h-full rounded-lg border-4 border-[#2171b5] transition-all duration-300 hover:border-[#2171b5]/80 ${
+            showQrHighlight ? "animate-pulse" : ""
+          }`}
+          style={{
+            boxShadow: "0 0 20px 4px rgba(33, 113, 181, 0.4), 0 0 40px 8px rgba(33, 113, 181, 0.2)",
+          }}
+        >
+          <span className="sr-only">온보딩 페이지로 이동</span>
+        </div>
               <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
                 <span className="text-[10px] md:text-xs font-medium text-[#2171b5] bg-background/90 px-2 py-1 rounded shadow-sm border border-[#2171b5]/20">
                   클릭하여 시작
