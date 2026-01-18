@@ -29,13 +29,13 @@ export default function LandingPage() {
         top: "19.4%",
         left: "20.0%",
         width: "9.7%",
-        aspectRatio: "1/1.134",
+        height: "11.0%",
       }
     : {
         top: "22%",
         left: "20.7%",
         width: "8.3%",
-        aspectRatio: "1/1.325",
+        height: "11%",
       };
 
   return (
