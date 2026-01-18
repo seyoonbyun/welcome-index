@@ -64,7 +64,7 @@ export default function LandingPage() {
                   data-testid="img-welcome"
                 />
               </div>
-              <p className="mt-6 text-primary font-medium flex items-center justify-center gap-2 group-hover:underline">
+              <p className="mt-6 text-[#2171b5] font-medium flex items-center justify-center gap-2 group-hover:underline">
                 웰컴 키트 구성 살펴보기
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </p>
