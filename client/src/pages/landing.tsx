@@ -82,17 +82,17 @@ export default function LandingPage() {
               data-testid="link-qr-onboarding"
             >
               <div 
-                className={`w-full h-full rounded-lg border-4 border-primary transition-all duration-300 hover:border-primary/80 ${
+                className={`w-full h-full rounded-lg border-4 border-[#2171b5] transition-all duration-300 hover:border-[#2171b5]/80 ${
                   showQrHighlight ? "animate-pulse" : ""
                 }`}
                 style={{
-                  boxShadow: "0 0 20px 4px hsl(var(--primary) / 0.4), 0 0 40px 8px hsl(var(--primary) / 0.2)",
+                  boxShadow: "0 0 20px 4px rgba(33, 113, 181, 0.4), 0 0 40px 8px rgba(33, 113, 181, 0.2)",
                 }}
               >
                 <span className="sr-only">온보딩 페이지로 이동</span>
               </div>
               <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
-                <span className="text-xs font-medium text-primary bg-background/90 px-2 py-1 rounded shadow-sm">
+                <span className="text-xs font-medium text-[#2171b5] bg-background/90 px-2 py-1 rounded shadow-sm">
                   클릭하여 시작
                 </span>
               </div>
