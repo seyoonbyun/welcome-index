@@ -32,7 +32,7 @@ export default function LandingPage() {
         height: "11.0%",
       }
     : {
-        top: "37%",
+        top: "22%",
         left: "20.7%",
         width: "8.3%",
         height: "11%",
