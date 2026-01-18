@@ -42,7 +42,8 @@ export default function LandingPage() {
     <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4 py-8">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4" data-testid="text-landing-title">
-          BNI Korea 멤버 온보딩 키트
+          <span className="block md:inline">BNI KOREA</span>
+          <span className="block md:inline"> 멤버 온보딩 키트</span>
         </h1>
         <p className="text-lg text-muted-foreground mb-8">
           QR 코드를 클릭하여 온보딩 리소스를 확인하세요
