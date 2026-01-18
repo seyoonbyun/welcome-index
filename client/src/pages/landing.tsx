@@ -26,10 +26,10 @@ export default function LandingPage() {
 
   const qrStyle = isMobile 
     ? {
-        top: "19%",
-        left: "19.5%",
-        width: "10.3%",
-        height: "11%",
+        top: "22%",
+        left: "21.5%",
+        width: "10%",
+        height: "10%",
       }
     : {
         top: "22%",
@@ -91,8 +91,8 @@ export default function LandingPage() {
               >
                 <span className="sr-only">온보딩 페이지로 이동</span>
               </div>
-              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
-                <span className="text-xs font-medium text-[#2171b5] bg-background/90 px-2 py-1 rounded shadow-sm">
+              <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
+                <span className="text-[10px] md:text-xs font-medium text-[#2171b5] bg-background/90 px-2 py-1 rounded shadow-sm border border-[#2171b5]/20">
                   클릭하여 시작
                 </span>
               </div>
