@@ -26,7 +26,7 @@ export default function LandingPage() {
 
   const qrStyle = isMobile 
     ? {
-        top: "22%",
+        top: "22.2%",
         left: "21.5%",
         width: "10%",
         height: "10%",
