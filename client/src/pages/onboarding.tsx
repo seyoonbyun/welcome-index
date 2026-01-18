@@ -131,7 +131,7 @@ function ResourceCard({ link }: { link: ResourceLink }) {
               <h3 className="text-lg font-medium text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors">
                 {link.title}
               </h3>
-              <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
+              <ExternalLink className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
             </div>
             <p className="text-sm text-muted-foreground mt-1">
               {link.description}
@@ -183,7 +183,7 @@ function PowerTeamWorkflowSection() {
                     <h4 className="font-medium text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors">
                       PowerTeam Toolkit
                     </h4>
-                    <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
+                    <ExternalLink className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
                   </div>
                   <p className="text-sm text-muted-foreground mt-1">
                     본인의 활동 성과를 입력하고 기록하세요
@@ -214,7 +214,7 @@ function PowerTeamWorkflowSection() {
                     <h4 className="font-medium text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors">
                       RPI 데이터 뷰어
                     </h4>
-                    <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
+                    <ExternalLink className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
                   </div>
                   <p className="text-sm text-muted-foreground mt-1">
                     나와 챕터 전체의 활동 기록을 확인하세요
