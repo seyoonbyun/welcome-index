@@ -286,7 +286,7 @@ export default function OnboardingPage() {
               Welcome Pack
             </span>
           </div>
-          <h1 className="text-2xl md:text-4xl font-bold text-foreground mb-6 px-4 break-keep" data-testid="text-page-title">
+          <h1 className="text-xl md:text-4xl font-bold text-foreground mb-6 px-4 break-keep whitespace-nowrap" data-testid="text-page-title">
             BNI KOREA 멤버 온보딩 키트
           </h1>
           <p className="text-base md:text-lg text-muted-foreground max-w-4xl mx-auto px-6 break-keep md:whitespace-nowrap">
