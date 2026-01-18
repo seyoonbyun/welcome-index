@@ -304,10 +304,7 @@ export default function OnboardingPage() {
 
         <footer className="mt-16 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-muted-foreground">
-              BNI Korea. All rights reserved.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-6">
+            <div className="flex flex-wrap items-center justify-center gap-6 order-1 md:order-2">
               <a
                 href="https://pay.bnikorea.com/"
                 target="_blank"
@@ -336,6 +333,9 @@ export default function OnboardingPage() {
                 공식 웹사이트
               </a>
             </div>
+            <p className="text-sm text-muted-foreground order-2 md:order-1">
+              BNI Korea. All rights reserved.
+            </p>
           </div>
         </footer>
       </div>
