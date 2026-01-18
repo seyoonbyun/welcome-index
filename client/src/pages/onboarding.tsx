@@ -282,13 +282,10 @@ export default function OnboardingPage() {
       <div className="max-w-5xl mx-auto px-4 py-8 md:px-8 md:py-16">
         <header className="text-center mb-10 md:mb-16">
           <h1 className="text-3xl md:text-5xl font-bold text-foreground mb-4 px-4 break-keep" data-testid="text-page-title">
-            BNI Korea 멤버 온보딩
+            BNI KOREA 멤버 온보딩 키트 : Welcome Pack
           </h1>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-6 break-keep">
-            환영합니다! BNI Korea 플랫폼 멤버로서 활동에 필요한 모든 리소스를 한눈에 확인하세요.
-          </p>
-          <p className="text-sm md:text-base text-muted-foreground mt-2">
-            모든 리소스가 한 곳에
+            환영합니다 ! BNI KOREA 멤버로서 활동에 필요한 모든 리소스를 한눈에 확인하세요 !
           </p>
         </header>
 
