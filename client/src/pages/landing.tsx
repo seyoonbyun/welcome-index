@@ -50,12 +50,7 @@ export default function LandingPage() {
         </p>
         
         <div className="relative inline-block w-fit mx-auto">
-          <a 
-            href="https://welcomepack-i49t.vercel.app/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            data-testid="link-to-welcomepack"
-          >
+          <Link href="/welcome_pack" data-testid="link-to-welcomepack">
             <div className="group cursor-pointer">
               <div className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-xl group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2">
                 <img
@@ -70,7 +65,7 @@ export default function LandingPage() {
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </p>
             </div>
-          </a>
+          </Link>
           
     <Link href="/onboarding">
       <div 

@@ -6,12 +6,14 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import OnboardingPage from "@/pages/onboarding";
 import LandingPage from "@/pages/landing";
+import WelcomePackPage from "@/pages/welcome-pack";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={LandingPage} />
       <Route path="/onboarding" component={OnboardingPage} />
+      <Route path="/welcome_pack" component={WelcomePackPage} />
       <Route component={NotFound} />
     </Switch>
   );

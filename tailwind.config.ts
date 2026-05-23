@@ -81,6 +81,11 @@ export default {
           busy: "rgb(239 68 68)",
           offline: "rgb(156 163 175)",
         },
+        bni: {
+          red: "#c01620",
+          "red-dark": "#a0121a",
+          "red-light": "#ff3a43",
+        },
       },
       fontFamily: {
         sans: ["var(--font-sans)"],
