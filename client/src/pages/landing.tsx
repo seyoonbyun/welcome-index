@@ -2,41 +2,69 @@ import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import welcomeImage from "@assets/welcome-pack-final_1767864745093.png";
 
+type Variant = null | "a" | "b";
+
 export default function LandingPage() {
   const [showQrHighlight, setShowQrHighlight] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [variant, setVariant] = useState<Variant>(null);
 
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
+    const params = new URLSearchParams(window.location.search);
+    const v = params.get("v");
+    if (v === "a" || v === "b") setVariant(v);
+
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
+    window.addEventListener("resize", checkMobile);
+
     const timer = setTimeout(() => {
       setShowQrHighlight(true);
     }, 500);
-    
+
     return () => {
       clearTimeout(timer);
-      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener("resize", checkMobile);
     };
   }, []);
 
-  const qrStyle = isMobile 
-    ? {
-        top: "19.4%",
-        left: "20.0%",
-        width: "9.7%",
-        height: "11.0%",
-      }
-    : {
-        top: "22%",
-        left: "20.7%",
-        width: "8.3%",
-        height: "11%",
-      };
+  const isEnhanced = variant === "a" || variant === "b";
+
+  const qrStyle =
+    isMobile && isEnhanced
+      ? {
+          top: "17.5%",
+          left: "17.2%",
+          width: "15%",
+          height: "17%",
+        }
+      : isMobile
+      ? {
+          top: "19.4%",
+          left: "20.0%",
+          width: "9.7%",
+          height: "11.0%",
+        }
+      : {
+          top: "22%",
+          left: "20.7%",
+          width: "8.3%",
+          height: "11%",
+        };
+
+  const innerBoxAnimation = isEnhanced
+    ? "animate-qr-pulse-scale"
+    : showQrHighlight
+    ? "animate-pulse"
+    : "";
+
+  const innerBoxShadow =
+    variant === "b"
+      ? "0 0 28px 8px rgba(33, 113, 181, 0.55), 0 0 56px 16px rgba(33, 113, 181, 0.3)"
+      : "0 0 20px 4px rgba(33, 113, 181, 0.4), 0 0 40px 8px rgba(33, 113, 181, 0.2)";
 
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4 py-8">
@@ -48,7 +76,7 @@ export default function LandingPage() {
         <p className="text-lg text-muted-foreground mb-8">
           QR 코드를 클릭하여 온보딩 리소스를 확인하세요
         </p>
-        
+
         <div className="relative inline-block w-fit mx-auto">
           <Link href="/welcome_pack" data-testid="link-to-welcomepack">
             <div className="group cursor-pointer">
@@ -66,29 +94,48 @@ export default function LandingPage() {
               </p>
             </div>
           </Link>
-          
-    <Link href="/onboarding">
-      <div 
-        className={`absolute cursor-pointer transition-all duration-700 ease-out flex items-center justify-center z-50 ${
-          showQrHighlight 
-            ? "scale-100 opacity-100" 
-            : "scale-75 opacity-0"
-        }`}
-        style={qrStyle}
-        data-testid="link-qr-onboarding"
-      >
-        <div 
-          className={`w-full h-full rounded-lg border-4 border-[#2171b5] transition-all duration-300 hover:border-[#2171b5]/80 ${
-            showQrHighlight ? "animate-pulse" : ""
-          }`}
-          style={{
-            boxShadow: "0 0 20px 4px rgba(33, 113, 181, 0.4), 0 0 40px 8px rgba(33, 113, 181, 0.2)",
-          }}
-        >
-          <span className="sr-only">온보딩 페이지로 이동</span>
-        </div>
-              <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
-                <span className="text-[10px] md:text-xs font-medium text-[#2171b5] bg-background/90 px-2 py-1 rounded shadow-sm border border-[#2171b5]/20">
+
+          <Link href="/onboarding">
+            <div
+              className={`absolute cursor-pointer transition-all duration-700 ease-out flex items-center justify-center z-50 ${
+                showQrHighlight ? "scale-100 opacity-100" : "scale-75 opacity-0"
+              }`}
+              style={qrStyle}
+              data-testid="link-qr-onboarding"
+            >
+              {variant === "b" && showQrHighlight && (
+                <>
+                  <span
+                    className="absolute inset-0 rounded-lg border-4 border-[#2171b5] animate-ping opacity-75"
+                    aria-hidden="true"
+                  />
+                  <span
+                    className="absolute -inset-2 rounded-xl border-2 border-[#2171b5]/60 animate-ping opacity-50"
+                    style={{ animationDelay: "0.4s" }}
+                    aria-hidden="true"
+                  />
+                </>
+              )}
+              <div
+                className={`w-full h-full rounded-lg border-4 border-[#2171b5] transition-all duration-300 hover:border-[#2171b5]/80 relative ${innerBoxAnimation} ${
+                  variant === "b" && showQrHighlight ? "animate-qr-zoom-in" : ""
+                }`}
+                style={{ boxShadow: innerBoxShadow }}
+              >
+                <span className="sr-only">온보딩 페이지로 이동</span>
+              </div>
+              <div
+                className={`absolute -bottom-10 left-1/2 transform -translate-x-1/2 whitespace-nowrap ${
+                  isEnhanced ? "animate-qr-label-bounce" : ""
+                }`}
+              >
+                <span
+                  className={`font-medium text-[#2171b5] bg-background/90 rounded shadow-sm border border-[#2171b5]/20 ${
+                    isEnhanced
+                      ? "text-sm md:text-xs px-3 py-1.5"
+                      : "text-[10px] md:text-xs px-2 py-1"
+                  }`}
+                >
                   클릭하여 시작
                 </span>
               </div>
