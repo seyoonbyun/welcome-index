@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import welcomeImage from "@assets/welcome-pack-final_1767864745093.png";
+import qrCodeImage from "@assets/bni-qr_1768900000000.svg";
 
-type Variant = null | "a" | "b";
+type Variant = null | "a" | "b" | "c";
 
 export default function LandingPage() {
   const [showQrHighlight, setShowQrHighlight] = useState(false);
@@ -16,7 +17,7 @@ export default function LandingPage() {
 
     const params = new URLSearchParams(window.location.search);
     const v = params.get("v");
-    if (v === "a" || v === "b") setVariant(v);
+    if (v === "a" || v === "b" || v === "c") setVariant(v);
 
     checkMobile();
     window.addEventListener("resize", checkMobile);
@@ -31,10 +32,18 @@ export default function LandingPage() {
     };
   }, []);
 
-  const isEnhanced = variant === "a" || variant === "b";
+  const isEnhanced = variant === "a" || variant === "b" || variant === "c";
+  const isCameraZoom = variant === "c";
 
   const qrStyle =
-    isMobile && isEnhanced
+    isMobile && variant === "c"
+      ? {
+          top: "17.5%",
+          left: "18.2%",
+          width: "13%",
+          height: "17%",
+        }
+      : isMobile && isEnhanced
       ? {
           top: "17.5%",
           left: "17.2%",
@@ -55,11 +64,14 @@ export default function LandingPage() {
           height: "11%",
         };
 
-  const innerBoxAnimation = isEnhanced
-    ? "animate-qr-pulse-scale"
-    : showQrHighlight
-    ? "animate-pulse"
-    : "";
+  const innerBoxAnimation =
+    variant === "c"
+      ? ""
+      : variant === "a" || variant === "b"
+      ? "animate-qr-pulse-scale"
+      : showQrHighlight
+      ? "animate-pulse"
+      : "";
 
   const innerBoxShadow =
     variant === "b"
@@ -78,24 +90,21 @@ export default function LandingPage() {
         </p>
 
         <div className="relative inline-block w-fit mx-auto">
-          <Link href="/welcome_pack" data-testid="link-to-welcomepack">
-            <div className="group cursor-pointer">
-              <div className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-xl group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2">
-                <img
-                  src={welcomeImage}
-                  alt="BNI Korea 웰컴 키트 구성"
-                  className="w-full h-auto max-w-[90vw] md:max-w-3xl block"
-                  data-testid="img-welcome"
-                />
+          <div className="relative">
+            <Link href="/welcome_pack" data-testid="link-to-welcomepack">
+              <div className="group cursor-pointer">
+                <div className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-xl group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2">
+                  <img
+                    src={welcomeImage}
+                    alt="BNI Korea 웰컴 키트 구성"
+                    className="w-full h-auto max-w-[90vw] md:max-w-3xl block"
+                    data-testid="img-welcome"
+                  />
+                </div>
               </div>
-              <p className="mt-6 text-[#2171b5] font-medium flex items-center justify-center gap-2 group-hover:underline">
-                웰컴 키트 구성 살펴보기
-                <span className="transition-transform group-hover:translate-x-1">→</span>
-              </p>
-            </div>
-          </Link>
+            </Link>
 
-          <Link href="/onboarding">
+            <Link href="/onboarding">
             <div
               className={`absolute cursor-pointer transition-all duration-700 ease-out flex items-center justify-center z-50 ${
                 showQrHighlight ? "scale-100 opacity-100" : "scale-75 opacity-0"
@@ -103,42 +112,64 @@ export default function LandingPage() {
               style={qrStyle}
               data-testid="link-qr-onboarding"
             >
-              {variant === "b" && showQrHighlight && (
-                <>
-                  <span
-                    className="absolute inset-0 rounded-lg border-4 border-[#2171b5] animate-ping opacity-75"
+              <div className={`relative w-full h-full ${isCameraZoom ? "animate-qr-zoom-hold" : ""}`}>
+                {variant === "c" && (
+                  <img
+                    src={qrCodeImage}
+                    alt=""
                     aria-hidden="true"
+                    className="absolute inset-1 w-[calc(100%-0.5rem)] h-[calc(100%-0.5rem)] object-contain bg-white rounded pointer-events-none"
                   />
-                  <span
-                    className="absolute -inset-2 rounded-xl border-2 border-[#2171b5]/60 animate-ping opacity-50"
-                    style={{ animationDelay: "0.4s" }}
-                    aria-hidden="true"
-                  />
-                </>
-              )}
-              <div
-                className={`w-full h-full rounded-lg border-4 border-[#2171b5] transition-all duration-300 hover:border-[#2171b5]/80 relative ${innerBoxAnimation} ${
-                  variant === "b" && showQrHighlight ? "animate-qr-zoom-in" : ""
-                }`}
-                style={{ boxShadow: innerBoxShadow }}
-              >
-                <span className="sr-only">온보딩 페이지로 이동</span>
-              </div>
-              <div
-                className={`absolute -bottom-10 left-1/2 transform -translate-x-1/2 whitespace-nowrap ${
-                  isEnhanced ? "animate-qr-label-bounce" : ""
-                }`}
-              >
-                <span
-                  className={`font-medium text-[#2171b5] bg-background/90 rounded shadow-sm border border-[#2171b5]/20 ${
-                    isEnhanced
-                      ? "text-sm md:text-xs px-3 py-1.5"
-                      : "text-[10px] md:text-xs px-2 py-1"
+                )}
+                {variant === "b" && showQrHighlight && (
+                  <>
+                    <span
+                      className="absolute inset-0 rounded-lg border-4 border-[#2171b5] animate-ping opacity-75"
+                      aria-hidden="true"
+                    />
+                    <span
+                      className="absolute -inset-2 rounded-xl border-2 border-[#2171b5]/60 animate-ping opacity-50"
+                      style={{ animationDelay: "0.4s" }}
+                      aria-hidden="true"
+                    />
+                  </>
+                )}
+                <div
+                  className={`w-full h-full rounded-lg border-4 border-[#2171b5] transition-all duration-300 hover:border-[#2171b5]/80 relative ${innerBoxAnimation} ${
+                    variant === "b" && showQrHighlight ? "animate-qr-zoom-in" : ""
+                  }`}
+                  style={{ boxShadow: innerBoxShadow }}
+                >
+                  <span className="sr-only">온보딩 페이지로 이동</span>
+                </div>
+                <div
+                  className={`absolute ${variant === "c" ? "-bottom-6" : "-bottom-10"} left-1/2 transform -translate-x-1/2 whitespace-nowrap ${
+                    isEnhanced ? "animate-qr-label-bounce" : ""
                   }`}
                 >
-                  클릭하여 시작
-                </span>
+                  <span
+                    className={`font-medium text-[#2171b5] bg-background/90 rounded shadow-sm border border-[#2171b5]/20 ${
+                      variant === "c"
+                        ? "text-[10px] md:text-xs px-2 py-0.5"
+                        : isEnhanced
+                        ? "text-sm md:text-xs px-3 py-1.5"
+                        : "text-[10px] md:text-xs px-2 py-1"
+                    }`}
+                  >
+                    클릭하여 시작
+                  </span>
+                </div>
               </div>
+            </div>
+          </Link>
+          </div>
+
+          <Link href="/welcome_pack" data-testid="link-to-welcomepack-text">
+            <div className="group cursor-pointer mt-6">
+              <p className="text-[#2171b5] font-medium flex items-center justify-center gap-2 group-hover:underline">
+                웰컴 키트 구성 살펴보기
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </p>
             </div>
           </Link>
         </div>

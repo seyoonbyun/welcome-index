@@ -114,6 +114,13 @@ export default {
           "0%, 100%": { transform: "translate(-50%, 0)" },
           "50%": { transform: "translate(-50%, -4px)" },
         },
+        "qr-zoom-hold": {
+          "0%": { transform: "scale(1)" },
+          "12%": { transform: "scale(2)" },
+          "78%": { transform: "scale(2)" },
+          "90%": { transform: "scale(1)" },
+          "100%": { transform: "scale(1)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -121,6 +128,7 @@ export default {
         "qr-pulse-scale": "qr-pulse-scale 1.4s ease-in-out infinite",
         "qr-zoom-in": "qr-zoom-in 0.6s ease-out forwards",
         "qr-label-bounce": "qr-label-bounce 1.4s ease-in-out infinite",
+        "qr-zoom-hold": "qr-zoom-hold 6s ease-in-out infinite",
       },
     },
   },
