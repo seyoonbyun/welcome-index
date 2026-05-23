@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import welcomeImage from "@assets/welcome-pack-final_1767864745093.png";
+import welcomeImage from "@assets/welcome-pack-final_1768900100000.jpg";
 import qrCodeImage from "@assets/bni-qr_1768900000000.svg";
 
 type Variant = null | "a" | "b" | "c";
@@ -94,12 +94,16 @@ export default function LandingPage() {
           <div className="relative">
             <Link href="/welcome_kit" data-testid="link-to-welcomepack">
               <div className="group cursor-pointer">
-                <div className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-xl group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2">
+                <div className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-xl group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2 w-[90vw] md:w-[48rem] max-w-full aspect-[1600/1195] bg-white">
                   <img
                     src={welcomeImage}
                     alt="BNI Korea 웰컴 키트 구성"
-                    className="w-full h-auto max-w-[90vw] md:max-w-3xl block"
+                    className="w-full h-full object-cover block"
                     data-testid="img-welcome"
+                    width={1600}
+                    height={1195}
+                    fetchPriority="high"
+                    decoding="async"
                   />
                 </div>
               </div>
