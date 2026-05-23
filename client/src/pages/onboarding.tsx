@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import PouchCredit from "@/components/pouch-credit";
@@ -292,14 +293,24 @@ export default function OnboardingPage() {
     <div className="min-h-screen bg-background">
       <div className="max-w-5xl mx-auto px-4 py-8 md:px-8 md:py-16">
         <header className="text-center mb-10 md:mb-16">
-          <div className="mb-2">
-            <span className="text-4xl md:text-6xl font-serif italic text-foreground block md:inline-block tracking-tight">
-              Welcome Pack
-            </span>
-          </div>
-          <h1 className="text-xl md:text-4xl font-bold text-foreground mb-6 px-4 break-keep whitespace-nowrap" data-testid="text-page-title">
-            BNI KOREA 멤버 온보딩 키트
-          </h1>
+          <Link href="/welcome_kit" data-testid="link-header-to-welcomekit">
+            <div className="group cursor-pointer relative inline-block mb-6">
+              <div className="mb-2">
+                <span className="text-4xl md:text-6xl font-serif italic text-foreground block md:inline-block tracking-tight transition-colors duration-200 group-hover:text-[#2171b5]">
+                  Welcome Pack
+                </span>
+              </div>
+              <h1 className="text-xl md:text-4xl font-bold text-foreground px-4 break-keep whitespace-nowrap transition-colors duration-200 group-hover:text-[#2171b5]" data-testid="text-page-title">
+                BNI KOREA 멤버 온보딩 키트
+              </h1>
+              <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-3 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 z-20">
+                <span className="inline-flex items-center gap-1.5 bg-[#2171b5] text-white text-sm font-medium px-4 py-2 rounded-full shadow-md whitespace-nowrap">
+                  웰컴팩 구성 살펴보러 갈까요?
+                  <span>→</span>
+                </span>
+              </div>
+            </div>
+          </Link>
           <p className="text-base md:text-lg text-muted-foreground max-w-4xl mx-auto px-6 break-keep md:whitespace-nowrap">
             환영합니다 ! BNI KOREA 멤버로서 활동에 필요한 모든 리소스를 한눈에 확인하세요 !
           </p>
@@ -312,6 +323,18 @@ export default function OnboardingPage() {
           <CategorySection title="공식 채널" links={officialChannels} />
           <CategorySection title="멤버 지원" links={memberSupportLinks} />
         </main>
+
+        <section className="mt-16 flex flex-col items-center gap-3 text-center">
+          <Link href="/welcome_kit" data-testid="link-bottom-to-welcomekit">
+            <div className="group cursor-pointer inline-flex items-center gap-1.5 text-white font-semibold text-xs md:text-sm px-5 py-2.5 rounded-lg bg-gradient-to-b from-[#2c87d1] to-[#1a5a94] shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_3px_0_#143d66,0_8px_18px_-4px_rgba(20,61,102,0.5)] hover:from-[#3593de] hover:to-[#1c629f] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_4px_0_#143d66,0_12px_24px_-5px_rgba(20,61,102,0.65)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0.5 active:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_0_0_#143d66,0_3px_8px_-2px_rgba(20,61,102,0.4)] active:scale-100 transition-all duration-200 ease-out">
+              웰컴팩 구성 자세히 보러가기
+              <span className="transition-transform group-hover:translate-x-1">→</span>
+            </div>
+          </Link>
+          <p className="text-xs text-muted-foreground/80">
+            BNI 코리아 웰컴팩의 모든 구성품을 자세히 살펴보세요
+          </p>
+        </section>
 
         <footer className="mt-16 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
