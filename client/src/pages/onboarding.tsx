@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import PouchCredit from "@/components/pouch-credit";
 import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, Info, ShoppingBag, UserPlus, CheckCircle, MapPin } from "lucide-react";
 
 interface ResourceLink {
@@ -78,7 +79,7 @@ const officialChannels: ResourceLink[] = [
   {
     title: "Podcast",
     description: "BNI Korea 공식 팟캐스트",
-    url: "https://podbbang.page.link/3XmXNUmqDrSQUieH8",
+    url: "https://youtube.com/playlist?list=PLVM0CBTOzUHwA2TnyfW6GO9-XH8vdovWq&si=-jmPNMUkXCRSl8Cp",
     icon: Podcast,
   },
   {
@@ -146,7 +147,12 @@ function ResourceCard({ link }: { link: ResourceLink }) {
 function PowerTeamWorkflowSection() {
   return (
     <section>
-      <h2 className="text-2xl font-semibold text-foreground mb-6 text-center md:text-left" data-testid="section-비즈니스-도구">
+      <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-2.5 justify-center md:justify-start" data-testid="section-비즈니스-도구">
+        <svg viewBox="0 0 20 22" width="20" height="22" className="text-[#2171b5]/60 flex-shrink-0" aria-hidden="true">
+          <path d="M 8 1.5 Q 8 4 5 5" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round" />
+          <rect x="2.5" y="5" width="15" height="16" rx="2" stroke="currentColor" strokeWidth="1.4" fill="none" />
+          <line x1="3.5" y1="8" x2="16.5" y2="8" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+        </svg>
         비즈니스 도구
       </h2>
       
@@ -264,7 +270,12 @@ function PowerTeamWorkflowSection() {
 function CategorySection({ title, links }: { title: string; links: ResourceLink[] }) {
   return (
     <section>
-      <h2 className="text-2xl font-semibold text-foreground mb-6 text-center md:text-left" data-testid={`section-${title}`}>
+      <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-2.5 justify-center md:justify-start" data-testid={`section-${title}`}>
+        <svg viewBox="0 0 20 22" width="20" height="22" className="text-[#2171b5]/60 flex-shrink-0" aria-hidden="true">
+          <path d="M 8 1.5 Q 8 4 5 5" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round" />
+          <rect x="2.5" y="5" width="15" height="16" rx="2" stroke="currentColor" strokeWidth="1.4" fill="none" />
+          <line x1="3.5" y1="8" x2="16.5" y2="8" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+        </svg>
         {title}
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -339,6 +350,7 @@ export default function OnboardingPage() {
           </div>
         </footer>
       </div>
+      <PouchCredit />
     </div>
   );
 }

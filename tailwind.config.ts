@@ -121,6 +121,14 @@ export default {
           "90%": { transform: "scale(1)" },
           "100%": { transform: "scale(1)" },
         },
+        "pouch-bounce": {
+          "0%, 100%": { transform: "translateY(0) rotate(-2deg)" },
+          "50%": { transform: "translateY(-6px) rotate(2deg)" },
+        },
+        "pouch-settle": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -129,6 +137,8 @@ export default {
         "qr-zoom-in": "qr-zoom-in 0.6s ease-out forwards",
         "qr-label-bounce": "qr-label-bounce 1.4s ease-in-out infinite",
         "qr-zoom-hold": "qr-zoom-hold 6s ease-in-out infinite",
+        "pouch-bounce": "pouch-bounce 1.2s ease-in-out infinite",
+        "pouch-settle": "pouch-settle 0.5s ease-out both",
       },
     },
   },

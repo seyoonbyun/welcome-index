@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import WelcomePackHeader from "@/components/welcome-pack-header";
+import PouchCredit from "@/components/pouch-credit";
 import { Button } from "@/components/ui/button";
 import { ArrowUp, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 
@@ -855,6 +856,8 @@ export default function WelcomePackPage() {
       >
         <ArrowUp className="w-6 h-6" />
       </motion.button>
+
+      <PouchCredit />
     </div>
   );
 }

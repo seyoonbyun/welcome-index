@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import welcomeImage from "@assets/welcome-pack-final_1768900100000.jpg";
 import qrCodeImage from "@assets/bni-qr_1768900000000.svg";
+import PouchCredit from "@/components/pouch-credit";
 
 type Variant = null | "a" | "b" | "c";
 
@@ -80,7 +81,8 @@ export default function LandingPage() {
       : "0 0 20px 4px rgba(33, 113, 181, 0.4), 0 0 40px 8px rgba(33, 113, 181, 0.2)";
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4 py-8">
+    <div className="min-h-screen bg-background flex flex-col">
+    <div className="flex-1 flex flex-col items-center justify-center px-4 py-8">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4" data-testid="text-landing-title">
           <span className="block md:inline">BNI KOREA</span>
@@ -94,7 +96,7 @@ export default function LandingPage() {
           <div className="relative">
             <Link href="/welcome_kit" data-testid="link-to-welcomepack">
               <div className="group cursor-pointer">
-                <div className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-xl group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2 w-[90vw] md:w-[48rem] max-w-full aspect-[1600/1195] bg-white">
+                <div className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-xl group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2 w-[90vw] md:w-[48rem] max-w-full aspect-[1600/1195] bg-white animate-pouch-settle">
                   <img
                     src={welcomeImage}
                     alt="BNI Korea 웰컴 키트 구성"
@@ -179,6 +181,8 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
+    </div>
+    <PouchCredit />
     </div>
   );
 }
