@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import PouchCredit from "@/components/pouch-credit";
-import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, Info, ShoppingBag, UserPlus, CheckCircle, MapPin } from "lucide-react";
+import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, Info, ShoppingBag, UserPlus, CheckCircle, MapPin, Package } from "lucide-react";
 
 interface ResourceLink {
   title: string;
@@ -324,16 +324,29 @@ export default function OnboardingPage() {
           <CategorySection title="멤버 지원" links={memberSupportLinks} />
         </main>
 
-        <section className="mt-16 flex flex-col items-center gap-3 text-center">
+        <section className="mt-6">
           <Link href="/welcome_kit" data-testid="link-bottom-to-welcomekit">
-            <div className="group cursor-pointer inline-flex items-center gap-1.5 text-white font-semibold text-xs md:text-sm px-5 py-2.5 rounded-lg bg-gradient-to-b from-[#2c87d1] to-[#1a5a94] shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_3px_0_#143d66,0_8px_18px_-4px_rgba(20,61,102,0.5)] hover:from-[#3593de] hover:to-[#1c629f] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_4px_0_#143d66,0_12px_24px_-5px_rgba(20,61,102,0.65)] hover:-translate-y-0.5 hover:scale-[1.03] active:translate-y-0.5 active:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_0_0_#143d66,0_3px_8px_-2px_rgba(20,61,102,0.4)] active:scale-100 transition-all duration-200 ease-out">
-              웰컴팩 구성 자세히 보러가기
-              <span className="transition-transform group-hover:translate-x-1">→</span>
+            <div className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg cursor-pointer">
+              <Card className="p-6 hover-elevate active-elevate-2 transition-all duration-200">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
+                      <Package className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-medium text-foreground group-hover:text-primary transition-colors">
+                        웰컴팩 구성 자세히 보러가기
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        BNI 코리아 웰컴팩의 모든 구성품을 자세히 살펴보세요
+                      </p>
+                    </div>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-primary flex-shrink-0 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Card>
             </div>
           </Link>
-          <p className="text-xs text-muted-foreground/80">
-            BNI 코리아 웰컴팩의 모든 구성품을 자세히 살펴보세요
-          </p>
         </section>
 
         <footer className="mt-16 pt-8 border-t border-border">
