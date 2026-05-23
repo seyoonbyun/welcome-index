@@ -67,7 +67,7 @@ export default function WelcomePackPage() {
   };
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-white">
+    <div ref={containerRef} className="min-h-screen bg-white" style={{ fontFamily: '"Pretendard Variable", Pretendard, sans-serif' }}>
       <WelcomePackHeader />
 
       {/* Hero Section */}
@@ -85,7 +85,7 @@ export default function WelcomePackPage() {
             <motion.p
               className="mb-4 text-gray-600"
               style={{
-                fontFamily: 'Inter, "Open Sans", sans-serif',
+                fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                 fontSize: "16px",
                 fontWeight: 400,
                 lineHeight: "24px",
@@ -98,7 +98,7 @@ export default function WelcomePackPage() {
             <motion.h1
               className="mb-6 text-gray-900 leading-none text-5xl md:text-7xl"
               style={{
-                fontFamily: '"Playfair Display", Georgia, serif',
+                fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                 fontWeight: 400,
                 letterSpacing: "normal",
                 margin: "0 0 24px",
@@ -111,7 +111,7 @@ export default function WelcomePackPage() {
             <motion.p
               className="mb-8 text-gray-700 max-w-2xl mx-auto"
               style={{
-                fontFamily: 'Inter, "Open Sans", sans-serif',
+                fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                 fontSize: "18px",
                 fontWeight: 400,
                 lineHeight: "28px",
@@ -127,9 +127,9 @@ export default function WelcomePackPage() {
               <Button
                 className="bg-white hover:bg-gray-50 text-bni-red border border-gray-300 rounded-full shadow-lg"
                 style={{
-                  fontFamily: 'Inter, "Open Sans", sans-serif',
+                  fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                   fontSize: "14px",
-                  fontWeight: 500,
+                  fontWeight: 400,
                   padding: "12px 24px",
                 }}
                 onClick={() => {
@@ -167,9 +167,9 @@ export default function WelcomePackPage() {
             <p
               className="mb-2"
               style={{
-                fontFamily: 'Inter, "Open Sans", sans-serif',
+                fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                 fontSize: "14px",
-                fontWeight: 500,
+                fontWeight: 400,
                 lineHeight: "20px",
                 color: "rgb(211, 18, 18)",
                 textTransform: "uppercase",
@@ -181,7 +181,7 @@ export default function WelcomePackPage() {
             <h2
               className="mb-4"
               style={{
-                fontFamily: '"Playfair Display", Georgia, serif',
+                fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                 fontSize: "48px",
                 fontWeight: 400,
                 lineHeight: "48px",
@@ -194,7 +194,7 @@ export default function WelcomePackPage() {
             <p
               className="max-w-2xl mx-auto"
               style={{
-                fontFamily: 'Inter, "Open Sans", sans-serif',
+                fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                 fontSize: "18px",
                 fontWeight: 400,
                 lineHeight: "28px",
@@ -301,9 +301,9 @@ export default function WelcomePackPage() {
                   <h3
                     className="mb-2"
                     style={{
-                      fontFamily: 'Inter, "Open Sans", sans-serif',
+                      fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                       fontSize: "14px",
-                      fontWeight: 500,
+                      fontWeight: 400,
                       lineHeight: "20px",
                       color: "rgb(23, 23, 23)",
                     }}
@@ -312,7 +312,7 @@ export default function WelcomePackPage() {
                   </h3>
                   <p
                     style={{
-                      fontFamily: 'Inter, "Open Sans", sans-serif',
+                      fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                       fontSize: "14px",
                       fontWeight: 400,
                       lineHeight: "22.75px",
@@ -338,9 +338,9 @@ export default function WelcomePackPage() {
               <h3
                 className="mb-4"
                 style={{
-                  fontFamily: 'Inter, "Open Sans", sans-serif',
+                  fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                   fontSize: "30px",
-                  fontWeight: 600,
+                  fontWeight: 400,
                   lineHeight: "36px",
                   color: "rgb(23, 23, 23)",
                 }}
@@ -350,7 +350,7 @@ export default function WelcomePackPage() {
               <p
                 className="mb-6 leading-relaxed"
                 style={{
-                  fontFamily: 'Inter, "Open Sans", sans-serif',
+                  fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                   fontSize: "16px",
                   fontWeight: 400,
                   lineHeight: "26px",
@@ -388,9 +388,9 @@ export default function WelcomePackPage() {
             <p
               className="mb-2"
               style={{
-                fontFamily: 'Inter, "Open Sans", sans-serif',
+                fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                 fontSize: "14px",
-                fontWeight: 500,
+                fontWeight: 400,
                 lineHeight: "20px",
                 color: "rgb(211, 18, 18)",
                 textTransform: "uppercase",
@@ -402,7 +402,7 @@ export default function WelcomePackPage() {
             <h2
               className="mb-4"
               style={{
-                fontFamily: '"Playfair Display", Georgia, serif',
+                fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                 fontSize: "36px",
                 fontWeight: 400,
                 lineHeight: "40px",
@@ -415,7 +415,7 @@ export default function WelcomePackPage() {
             <p
               className="max-w-2xl mx-auto"
               style={{
-                fontFamily: 'Inter, "Open Sans", sans-serif',
+                fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                 fontSize: "18px",
                 fontWeight: 400,
                 lineHeight: "28px",
@@ -470,9 +470,9 @@ export default function WelcomePackPage() {
                 <h3
                   className="mb-2"
                   style={{
-                    fontFamily: 'Inter, "Open Sans", sans-serif',
+                    fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                     fontSize: "16px",
-                    fontWeight: 600,
+                    fontWeight: 400,
                     lineHeight: "24px",
                     color: "rgb(23, 23, 23)",
                   }}
@@ -482,7 +482,7 @@ export default function WelcomePackPage() {
                 <p
                   className="leading-relaxed"
                   style={{
-                    fontFamily: 'Inter, "Open Sans", sans-serif',
+                    fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                     fontSize: "14px",
                     fontWeight: 400,
                     lineHeight: "22.75px",
@@ -498,7 +498,7 @@ export default function WelcomePackPage() {
       </section>
 
       {/* Product Details Section */}
-      <section id="usage" className="py-20 md:py-32 bg-white">
+      <section id="usage" className="pt-20 md:pt-32 pb-4 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -507,74 +507,15 @@ export default function WelcomePackPage() {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <p className="text-sm text-gray-600 font-medium tracking-wider uppercase mb-2">
+            <p className="text-sm text-gray-600 font-normal tracking-wider uppercase mb-2">
               Product Details
             </p>
-            <h2 className="text-4xl md:text-5xl font-black mb-4">오거나이저 상세 보기</h2>
+            <h2 className="text-4xl md:text-5xl font-normal mb-4">세심하게 설계된<br />내부 구조</h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               세심하게 설계된 모든 디테일이 당신의 비즈니스를 더욱 체계적으로 만들어 드립니다
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                label: "BNI KOREA 로고",
-                title: "전면 디자인",
-                desc: "선명한 BNI KOREA 로고가 새겨진 프리미엄 레드 PU 레더. 고급스러운 사피아노 텍스처와 견고한 지퍼가 내구성을 보장합니다.",
-                specs: ["사이즈: 34cm x 26cm", "소재: PU 레더", "컬러: BNI 시그니처 레드"],
-                img: "/assets/PhotoshopExtension_Image_2.png",
-              },
-              {
-                label: "Givers Gain® 스트랩",
-                title: "후면 디자인",
-                desc: '탈부착 가능한 손목 스트랩에 "Givers Gain®" 철학이 각인되어 있으며, 스마트 QR코드 태그가 부착되어 언제든 디지털 연결이 가능합니다.',
-                specs: ["손목 스트랩 탈부착", "QR코드 태그 포함", "양면 지퍼 오픈"],
-                img: "/assets/PhotoshopExtension_Image_3.png",
-              },
-              {
-                label: "체계적인 수납 시스템",
-                title: "내부 구조",
-                desc: "왼쪽 면에는 메쉬 포켓과 일반 포켓이 배치되어 명함, 리퍼럴 슬립을 정리하고, 오른쪽 면에는 BNI 슬로건이 각인되어 있습니다.",
-                specs: ["메쉬 포켓 2개", "일반 포켓 3개", "펜 홀더 1개"],
-                img: "/assets/PhotoshopExtension_Image_4.png",
-              },
-              {
-                label: "올인원 비즈니스 키트",
-                title: "풀 구성품",
-                desc: "오거나이저 안에 모든 BNI 필수 도구가 깔끔하게 정리됩니다. 책자, 펜, 명함, 리퍼럴 슬립까지 체계적으로 수납하여 미팅 준비를 완벽하게.",
-                specs: ["핵심 도서 2권", "BNI 공식 펜", "멤버 규정집"],
-                img: "/assets/PhotoshopExtension_Image_5.png",
-              },
-            ].map((detail, index) => (
-              <motion.div
-                key={index}
-                className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={fadeInUp}
-              >
-                <img
-                  src={detail.img}
-                  alt={detail.title}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-6">
-                  <p className="text-xs text-gray-500 font-medium mb-2">{detail.label}</p>
-                  <h3 className="text-xl font-black mb-3">{detail.title}</h3>
-                  <p className="text-gray-700 text-sm mb-4 leading-relaxed">{detail.desc}</p>
-                  <div className="space-y-1">
-                    {detail.specs.map((spec, i) => (
-                      <div key={i} className="text-xs text-gray-600">
-                        {spec}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -600,10 +541,10 @@ export default function WelcomePackPage() {
               viewport={{ once: true }}
               variants={fadeInUp}
             >
-              <p className="text-sm text-gray-600 font-medium tracking-wider uppercase mb-2">
+              <p className="text-sm text-gray-600 font-normal tracking-wider uppercase mb-2">
                 Smart Connection
               </p>
-              <h2 className="text-3xl md:text-4xl font-black mb-4">QR코드 태그 상세</h2>
+              <h2 className="text-3xl md:text-4xl font-normal mb-4">QR코드 태그 상세</h2>
               <p className="text-gray-700 mb-6 leading-relaxed">
                 Givers Gain® 손목 스트랩에 부착된 스마트 QR코드 태그는 당신의 디지털 프로필과 즉시 연결됩니다. 한 번의 스캔으로 BNI 커넥트, 개인 포트폴리오, SNS 프로필까지 모든 정보를 전달할 수 있습니다.
               </p>
@@ -630,10 +571,10 @@ export default function WelcomePackPage() {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <p className="text-sm text-gray-600 font-medium tracking-wider uppercase mb-2">
+            <p className="text-sm text-gray-600 font-normal tracking-wider uppercase mb-2">
               Knowledge & Philosophy
             </p>
-            <h2 className="text-4xl md:text-5xl font-black mb-4">성공의 토대</h2>
+            <h2 className="text-4xl md:text-5xl font-normal mb-4">성공의 토대</h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               지식과 철학을 담은 콘텐츠로 BNI 시스템을 깊이 이해하고 비즈니스에 적용하세요
             </p>
@@ -645,19 +586,19 @@ export default function WelcomePackPage() {
                 category: "핵심 철학 도서",
                 title: "당신은 기버입니까?",
                 desc: 'BNI의 근간이 되는 "Givers Gain®" 철학을 깊이 있게 이해하고, 비즈니스 현장에서 구체적으로 실천하는 방법을 안내하는 필독서입니다.',
-                img: "/assets/PhotoshopExtension_Image_6.png",
+                img: "/assets/icon-book.svg",
               },
               {
                 category: "가이드라인",
                 title: "BNI 멤버 규정",
                 desc: "BNI 시스템의 원칙과 규칙을 명확하게 제시하며, 모든 멤버가 공정하고 투명한 환경에서 활동할 수 있는 기반이 됩니다.",
-                img: "/assets/Gemini_Generated_Image_l3vsf1l3vsf1l3vs.png",
+                img: "/assets/icon-document.svg",
               },
               {
                 category: "비즈니스 성장",
                 title: "성장 전략 자료",
                 desc: "BNI가 수십 년간 검증해 온 체계적인 성장 전략을 통해, 당신의 비즈니스를 한 단계 더 도약시킬 통찰력을 제공합니다.",
-                img: "/assets/PhotoshopExtension_Image_2.png",
+                img: "/assets/icon-growth.svg",
               },
             ].map((item, index) => (
               <motion.div
@@ -674,8 +615,8 @@ export default function WelcomePackPage() {
                   className="w-full h-64 object-contain bg-gray-50"
                 />
                 <div className="p-6">
-                  <p className="text-xs text-gray-500 font-medium mb-2">{item.category}</p>
-                  <h3 className="text-xl font-black mb-3">{item.title}</h3>
+                  <p className="text-xs text-gray-500 font-normal mb-2">{item.category}</p>
+                  <h3 className="text-xl font-normal mb-3">{item.title}</h3>
                   <p className="text-gray-700 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </motion.div>
@@ -690,7 +631,7 @@ export default function WelcomePackPage() {
             variants={fadeInUp}
           >
             <p className="text-xl text-gray-700 mb-2">머릿속에 성공의 청사진을 그렸다면</p>
-            <p className="text-xl font-bold text-gray-900">이제 손에 날카로운 펜을 쥘 시간입니다</p>
+            <p className="text-xl font-normal text-gray-900">이제 손에 날카로운 펜을 쥘 시간입니다</p>
           </motion.div>
         </div>
       </section>
@@ -705,10 +646,10 @@ export default function WelcomePackPage() {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <p className="text-sm text-gray-600 font-medium tracking-wider uppercase mb-2">
+            <p className="text-sm text-gray-600 font-normal tracking-wider uppercase mb-2">
               Essential Tools
             </p>
-            <h2 className="text-4xl md:text-5xl font-black mb-4">실행을 위한 필수 도구</h2>
+            <h2 className="text-4xl md:text-5xl font-normal mb-4">실행을 위한 필수 도구</h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
               위대한 아이디어를 기록하고, 소중한 관계를 연결하는 작은 도구들이 결정적인 차이를 만듭니다
             </p>
@@ -720,13 +661,13 @@ export default function WelcomePackPage() {
                 title: "BNI 공식 펜",
                 desc: "BNI 로고가 새겨진 깔끔한 흰색 펜은 주간 미팅에서의 발표 내용 기록, 1-2-1 미팅의 핵심 사항 정리, 그리고 동료 멤버에게 감사를 전하는 모든 순간에 당신의 신뢰를 더합니다.",
                 features: ["깔끔한 화이트 디자인", "BNI 로고 각인", "부드러운 필기감"],
-                img: "/assets/PhotoshopExtension_Image_3.png",
+                img: "/assets/icon-pen.svg",
               },
               {
                 title: "스마트 QR코드 태그",
                 desc: "아날로그 첫인상을 즉각적인 디지털 관계로 전환하는 관문입니다. 단 한 번의 스캔으로 당신의 전문성을 각인시키세요.",
                 features: ["BNI 커넥트 프로필 연결", "개인 포트폴리오 링크", "디지털 명함 교환"],
-                img: "/assets/Gemini_Generated_Image_hpc3r8hpc3r8hpc3.png",
+                img: "/assets/icon-qr.svg",
               },
             ].map((tool, index) => (
               <motion.div
@@ -744,7 +685,7 @@ export default function WelcomePackPage() {
                     className="w-32 h-32 object-cover rounded-lg"
                   />
                   <div>
-                    <h3 className="text-2xl font-black mb-3">{tool.title}</h3>
+                    <h3 className="text-2xl font-normal mb-3">{tool.title}</h3>
                     <p className="text-gray-700 leading-relaxed mb-4">{tool.desc}</p>
                     <div className="space-y-2">
                       {tool.features.map((feature, i) => (
@@ -781,13 +722,22 @@ export default function WelcomePackPage() {
                   alt="QR 태그"
                   className="rounded-lg"
                 />
-                <img
-                  src="/assets/PhotoshopExtension_Image_5.png"
-                  alt="스트랩"
-                  className="rounded-lg"
-                />
+                <div className="space-y-4">
+                  <img
+                    src="/assets/PhotoshopExtension_Image_5.png"
+                    alt="스트랩"
+                    className="rounded-lg"
+                  />
+                  <img
+                    src="/assets/pouch_girl.png"
+                    alt="파우치 활용 모습"
+                    className="rounded-lg"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
               </div>
-              <h3 className="text-2xl font-black mb-4">디지털과 아날로그의 완벽한 연결</h3>
+              <h3 className="text-2xl font-normal mb-4">디지털과 아날로그의 완벽한 연결</h3>
               <p className="text-gray-700 mb-6 leading-relaxed">
                 QR코드 태그는 오거나이저에 부착하거나 분리하여 사용할 수 있습니다. 명함을 건네는 전통적인 방식과 디지털 연결을 동시에 제공하여, 어떤 상황에서도 효과적인 네트워킹이 가능합니다.
               </p>
@@ -814,7 +764,7 @@ export default function WelcomePackPage() {
             variants={staggerContainer}
           >
             <motion.h2
-              className="text-4xl md:text-6xl font-black mb-6"
+              className="text-4xl md:text-6xl font-normal mb-6"
               variants={fadeInUp}
             >
               당신의 성공적인 시작을<br />응원합니다
@@ -826,7 +776,7 @@ export default function WelcomePackPage() {
               BNI 멤버십 키트는 단순한 물품의 집합이 아닙니다. 이것은 BNI 코리아가 신규 멤버 한 분 한 분의 성공적인 비즈니스 여정을 위해 제공하는 체계적인 지원 시스템의 시작이자, 당신의 의지와 약속을 담는 그릇입니다.
             </motion.p>
             <motion.div variants={fadeInUp} className="mb-8">
-              <blockquote className="text-2xl md:text-3xl font-bold italic mb-4">
+              <blockquote className="text-2xl md:text-3xl font-normal italic mb-4">
                 "Changing the Way the World Does Business™"
               </blockquote>
               <p className="text-lg opacity-90">세상의 비즈니스 방법을 바꿉니다</p>
@@ -834,7 +784,7 @@ export default function WelcomePackPage() {
             <motion.div variants={fadeInUp}>
               <Button
                 size="lg"
-                className="bg-white text-bni-red hover:bg-gray-100 rounded-full px-10 py-6 text-lg font-bold shadow-xl"
+                className="bg-white text-bni-red hover:bg-gray-100 rounded-full px-10 py-6 text-lg font-normal shadow-xl"
                 onClick={scrollToTop}
               >
                 BNI와 함께 시작하기
