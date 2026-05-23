@@ -194,7 +194,7 @@ function PowerTeamWorkflowSection() {
           </a>
           
           <a
-            href="https://www.powerteam-bnikorea.com/RPI2%EB%B2%88"
+            href="https://docs.google.com/spreadsheets/d/14KZrC6w8BUIFCp2AcLF6Uj36HKXsVQgZOY9_H2-DY18/edit?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
