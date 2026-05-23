@@ -167,8 +167,8 @@ export default function LandingPage() {
 
           <div className="mt-8 flex justify-center">
             <Link href="/welcome_kit" data-testid="link-to-welcomepack-text">
-              <div className="group cursor-pointer inline-flex items-center gap-2 bg-[#2171b5] text-white font-semibold text-sm md:text-base px-6 py-3 rounded-lg shadow-md hover:bg-[#1a5a94] hover:shadow-lg active:scale-95 transition-all duration-200">
-                웰컴 키트 구성 살펴보기
+              <div className="group cursor-pointer inline-flex items-center gap-2 text-white font-semibold text-sm md:text-base px-7 py-3.5 rounded-xl bg-gradient-to-b from-[#2c87d1] to-[#1a5a94] shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_4px_0_#143d66,0_10px_22px_-4px_rgba(20,61,102,0.55)] hover:from-[#3593de] hover:to-[#1c629f] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_6px_0_#143d66,0_18px_32px_-6px_rgba(20,61,102,0.7)] hover:-translate-y-0.5 hover:scale-[1.04] active:translate-y-1 active:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_0_0_#143d66,0_4px_10px_-2px_rgba(20,61,102,0.4)] active:scale-100 transition-all duration-200 ease-out">
+                웰컴팩 구성 자세히 보기
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </div>
             </Link>
