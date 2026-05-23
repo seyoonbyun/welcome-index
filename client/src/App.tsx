@@ -13,7 +13,7 @@ function Router() {
     <Switch>
       <Route path="/" component={LandingPage} />
       <Route path="/onboarding" component={OnboardingPage} />
-      <Route path="/welcome_pack" component={WelcomePackPage} />
+      <Route path="/welcome_kit" component={WelcomePackPage} />
       <Route component={NotFound} />
     </Switch>
   );

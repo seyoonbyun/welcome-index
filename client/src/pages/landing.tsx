@@ -92,7 +92,7 @@ export default function LandingPage() {
 
         <div className="relative inline-block w-fit mx-auto">
           <div className="relative">
-            <Link href="/welcome_pack" data-testid="link-to-welcomepack">
+            <Link href="/welcome_kit" data-testid="link-to-welcomepack">
               <div className="group cursor-pointer">
                 <div className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-xl group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2">
                   <img
@@ -165,14 +165,14 @@ export default function LandingPage() {
           </Link>
           </div>
 
-          <Link href="/welcome_pack" data-testid="link-to-welcomepack-text">
-            <div className="group cursor-pointer mt-6">
-              <p className="text-[#2171b5] font-medium flex items-center justify-center gap-2 group-hover:underline">
+          <div className="mt-8 flex justify-center">
+            <Link href="/welcome_kit" data-testid="link-to-welcomepack-text">
+              <div className="group cursor-pointer inline-flex items-center gap-2 bg-[#2171b5] text-white font-semibold text-sm md:text-base px-6 py-3 rounded-lg shadow-md hover:bg-[#1a5a94] hover:shadow-lg active:scale-95 transition-all duration-200">
                 웰컴 키트 구성 살펴보기
                 <span className="transition-transform group-hover:translate-x-1">→</span>
-              </p>
-            </div>
-          </Link>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
