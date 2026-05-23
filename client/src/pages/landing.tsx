@@ -8,7 +8,7 @@ type Variant = null | "a" | "b" | "c";
 export default function LandingPage() {
   const [showQrHighlight, setShowQrHighlight] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [variant, setVariant] = useState<Variant>(null);
+  const [variant, setVariant] = useState<Variant>("c");
 
   useEffect(() => {
     const checkMobile = () => {
@@ -18,6 +18,7 @@ export default function LandingPage() {
     const params = new URLSearchParams(window.location.search);
     const v = params.get("v");
     if (v === "a" || v === "b" || v === "c") setVariant(v);
+    else if (v === "none") setVariant(null);
 
     checkMobile();
     window.addEventListener("resize", checkMobile);
