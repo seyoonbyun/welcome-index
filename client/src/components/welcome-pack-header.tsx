@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { Link } from "wouter";
 import { Menu, X, Briefcase, LayoutGrid, BookOpen, Sparkles, QrCode } from "lucide-react";
 
@@ -10,8 +10,13 @@ const navItems = [
   { label: "핵심툴", labelEn: "Essential Tools", href: "#brand", icon: Sparkles },
 ];
 
-export default function WelcomePackHeader() {
-  const [menuOpen, setMenuOpen] = useState(true);
+export default function WelcomePackHeader({
+  menuOpen,
+  setMenuOpen,
+}: {
+  menuOpen: boolean;
+  setMenuOpen: Dispatch<SetStateAction<boolean>>;
+}) {
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();

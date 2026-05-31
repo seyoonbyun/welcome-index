@@ -53,6 +53,7 @@ export default function WelcomePackPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [interiorIndex, setInteriorIndex] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -108,27 +109,29 @@ export default function WelcomePackPage() {
 
   return (
     <div ref={containerRef} className="min-h-screen bg-white" style={{ fontFamily: '"Pretendard Variable", Pretendard, sans-serif' }}>
-      <WelcomePackHeader />
+      <WelcomePackHeader menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
       {/* Hero Section */}
       <motion.section
-        className="relative flex flex-col pt-20 md:pt-0 md:min-h-screen md:items-center md:justify-center overflow-hidden bg-white"
+        className={`relative flex flex-col ${menuOpen ? "pt-44" : "pt-20"} md:pt-0 md:min-h-screen md:items-center md:justify-center overflow-hidden bg-white transition-[padding] duration-300`}
         style={{ opacity: heroOpacity, scale: heroScale }}
       >
-        {/* 히어로 영상 (모바일: 흐름 블록, 전체 표시 contain / 데스크탑: 배경 꽉 채움 cover) */}
-        <video
-          className="pointer-events-none relative z-0 w-full h-auto object-contain md:absolute md:inset-0 md:h-full md:object-cover md:object-center"
-          src="/assets/welcome/hero.mp4"
-          poster="/assets/pouch_out.jpg"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-        />
-        {/* 가독성용 라이트 오버레이 */}
-        <div className="hidden md:block absolute inset-0 z-0 bg-white/55 pointer-events-none" />
+        {/* 히어로 영상 + 가독성용 흰색 틴트 (모바일: 흐름 블록 / 데스크탑: 배경 꽉 채움) */}
+        <div className="relative w-full z-0 md:absolute md:inset-0 md:h-full">
+          <video
+            className="pointer-events-none w-full h-auto object-contain md:absolute md:inset-0 md:h-full md:object-cover md:object-center"
+            src="/assets/welcome/hero.mp4"
+            poster="/assets/pouch_out.jpg"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+          />
+          {/* 흰색 틴트 — 모바일 35% / 데스크탑 55%(기존 유지) */}
+          <div className="absolute inset-0 bg-white/35 md:bg-white/55 pointer-events-none" />
+        </div>
         <div className="relative z-10 container mx-auto px-4 pt-10 pb-28 md:py-32 text-center">
           <motion.div
             initial="hidden"
