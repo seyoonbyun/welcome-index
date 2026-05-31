@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import WelcomePackHeader from "@/components/welcome-pack-header";
 import PouchCredit from "@/components/pouch-credit";
 import { Button } from "@/components/ui/button";
@@ -8,16 +8,26 @@ import { ArrowUp, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 // 이미지 경로는 public 폴더 기준
 const images = {
   hero: "/assets/pouch_cover2.png",
-  organizerFront: "/assets/pouch_out.jpg",
-  organizerSet: "/assets/KakaoTalk_20251213_145004065_11.jpg",
-  organizerInterior: "/assets/pouch_in.jpg",
-  organizerBack: "/assets/pouch_back.png",
-  organizerFull: "/assets/pouch_in.jpg",
+  organizerFront: "/assets/welcome/pouch_front.jpg",
+  organizerSet: "/assets/welcome/pouch_inside1.jpg",
+  organizerInterior: "/assets/welcome/pouch_inside2.jpg",
+  organizerBack: "/assets/welcome/pouch_back.jpg",
+  organizerFull: "/assets/welcome/pouch_inside1.jpg",
 };
 
 const galleryImages = [
-  images.organizerFront,
+  "/assets/welcome/pouch_front.jpg",
+  "/assets/welcome/pouch_back.jpg",
 ];
+
+const galleryLabels = ["외부 앞", "외부 뒤"];
+
+const interiorImages = [
+  "/assets/welcome/pouch_inside1.jpg",
+  "/assets/welcome/pouch_inside2.jpg",
+];
+
+const interiorLabels = ["내부 1", "내부 2"];
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -42,6 +52,7 @@ const staggerContainer = {
 export default function WelcomePackPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [interiorIndex, setInteriorIndex] = useState(0);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -66,6 +77,35 @@ export default function WelcomePackPage() {
     setCurrentImageIndex(index);
   };
 
+  const nextInterior = () => {
+    setInteriorIndex((prev) => (prev + 1) % interiorImages.length);
+  };
+
+  const prevInterior = () => {
+    setInteriorIndex((prev) => (prev - 1 + interiorImages.length) % interiorImages.length);
+  };
+
+  const goToInterior = (index: number) => {
+    setInteriorIndex(index);
+  };
+
+  // 5초 간격 자동 전환
+  useEffect(() => {
+    if (galleryImages.length <= 1) return;
+    const id = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
+    }, 10000);
+    return () => clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    if (interiorImages.length <= 1) return;
+    const id = setInterval(() => {
+      setInteriorIndex((prev) => (prev + 1) % interiorImages.length);
+    }, 10000);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <div ref={containerRef} className="min-h-screen bg-white" style={{ fontFamily: '"Pretendard Variable", Pretendard, sans-serif' }}>
       <WelcomePackHeader />
@@ -75,6 +115,15 @@ export default function WelcomePackPage() {
         className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-200"
         style={{ opacity: heroOpacity, scale: heroScale }}
       >
+        {/* 아주 연한 제품 실루엣 배경 (5~8% 투명도, 그레이스케일) */}
+        <motion.img
+          src="/assets/pouch_out.jpg"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none select-none absolute inset-0 m-auto z-0 w-auto max-h-[70vh] max-w-[85%] grayscale opacity-[0.07]"
+          animate={{ y: [0, -14, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
         <div className="relative z-10 container mx-auto px-4 py-32 text-center">
           <motion.div
             initial="hidden"
@@ -105,7 +154,11 @@ export default function WelcomePackPage() {
               }}
               variants={fadeInUp}
             >
-              성공적인 비즈니스<br />여정의 시작
+              비즈니스의 격을{" "}
+              <br className="md:hidden" />
+              높이는{" "}
+              <br className="hidden md:block" />
+              첫 시작
             </motion.h1>
 
             <motion.p
@@ -118,9 +171,9 @@ export default function WelcomePackPage() {
               }}
               variants={fadeInUp}
             >
-              BNI 코리아의 새로운 가족이 되신 것을 진심으로 환영합니다.
+              BNI 코리아의 새로운 멤버가 된 순간,
               <br className="hidden md:block" />
-              당신의 비즈니스 성장을 위한 여정이 시작됩니다.
+              당신의 네트워킹은 더 체계적이고 더 프로페셔널해집니다.
             </motion.p>
 
             <motion.div variants={fadeInUp}>
@@ -182,9 +235,9 @@ export default function WelcomePackPage() {
               className="mb-4"
               style={{
                 fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
-                fontSize: "48px",
+                fontSize: "clamp(30px, 7vw, 48px)",
                 fontWeight: 400,
-                lineHeight: "48px",
+                lineHeight: 1.15,
                 color: "rgb(23, 23, 23)",
                 margin: "0 0 16px",
               }}
@@ -192,7 +245,7 @@ export default function WelcomePackPage() {
               BNI 프로페셔널 오거나이저
             </h2>
             <p
-              className="max-w-2xl mx-auto"
+              className="max-w-3xl mx-auto"
               style={{
                 fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                 fontSize: "18px",
@@ -201,11 +254,11 @@ export default function WelcomePackPage() {
                 color: "rgb(102, 102, 102)",
               }}
             >
-              당신의 전문성을 담는 첫인상. 비즈니스 미팅에서 체계적인 준비성은 당신의 전문성을 대변합니다.
+              준비된 사람은 오거나이저부터 다릅니다. BNI 프로페셔널 오거나이저는 필요한 도구를 정돈하는 수납 아이템을 넘어, 미팅 전의 준비성과 현장에서의 전문성을 가장 먼저 보여주는 비즈니스 에센셜입니다.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+          <div className="max-w-[79.2rem] mx-auto mb-20">
             <motion.div
               className="relative"
               initial="hidden"
@@ -213,7 +266,7 @@ export default function WelcomePackPage() {
               viewport={{ once: true }}
               variants={fadeInUp}
             >
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gray-100">
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-gray-100">
                 <motion.img
                   key={currentImageIndex}
                   src={galleryImages[currentImageIndex]}
@@ -238,7 +291,7 @@ export default function WelcomePackPage() {
                       <ChevronRight className="w-6 h-6" />
                     </button>
                     <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm">
-                      {currentImageIndex === 0 ? "전면" : currentImageIndex === 1 ? "후면" : currentImageIndex === 2 ? "내부" : "전체"}
+                      {galleryLabels[currentImageIndex] ?? ""}
                     </div>
                   </>
                 )}
@@ -259,124 +312,105 @@ export default function WelcomePackPage() {
               )}
             </motion.div>
 
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={staggerContainer}
-            >
-              {[
-                {
-                  title: "프리미엄 소재",
-                  desc: "고급 사피아노 텍스처의 PU 레더로 제작되어 내구성과 고급스러움을 동시에 갖추었습니다.",
-                  img: "/assets/PhotoshopExtension_Image_2.png",
-                },
-                {
-                  title: "네트워킹 최적화",
-                  desc: "명함, 리퍼럴 슬립, 비즈니스 카드를 체계적으로 수납하여 효율적인 네트워킹을 지원합니다.",
-                  img: "/assets/PhotoshopExtension_Image_3.png",
-                },
-                {
-                  title: "글로벌 BNI 아이덴티티",
-                  desc: "전 세계 BNI 멤버들과 동일한 브랜드 경험으로 글로벌 네트워크의 일원임을 실감합니다.",
-                  img: "/assets/PhotoshopExtension_Image_4.png",
-                },
-                {
-                  title: "즉각적인 전문성 표현",
-                  desc: "미팅 시작 전부터 정리된 오거나이저가 당신의 준비성과 전문성을 무언으로 전달합니다.",
-                  img: "/assets/PhotoshopExtension_Image_5.png",
-                },
-              ].map((feature, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-white rounded-xl p-6 shadow-lg"
-                  variants={fadeInUp}
-                >
-                  <img
-                    src={feature.img}
-                    alt={feature.title}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
-                  />
-                  <h3
-                    className="mb-2"
-                    style={{
-                      fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
-                      fontSize: "14px",
-                      fontWeight: 400,
-                      lineHeight: "20px",
-                      color: "rgb(23, 23, 23)",
-                    }}
-                  >
-                    {feature.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
-                      fontSize: "14px",
-                      fontWeight: 400,
-                      lineHeight: "22.75px",
-                      color: "rgb(102, 102, 102)",
-                    }}
-                  >
-                    {feature.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
           </div>
 
-          {/* Quote Section */}
+          {/* Focus Gallery Section */}
           <motion.div
-            className="grid md:grid-cols-2 gap-12 items-center"
+            className="text-center mb-12 mt-24"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={staggerContainer}
+            variants={fadeInUp}
           >
-            <motion.div variants={fadeInUp}>
-              <h3
-                className="mb-4"
-                style={{
-                  fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
-                  fontSize: "30px",
-                  fontWeight: 400,
-                  lineHeight: "36px",
-                  color: "rgb(23, 23, 23)",
-                }}
-              >
-                완벽한 정리가 만드는 집중력
-              </h3>
-              <p
-                className="mb-6 leading-relaxed"
-                style={{
-                  fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
-                  fontSize: "16px",
-                  fontWeight: 400,
-                  lineHeight: "26px",
-                  color: "rgb(102, 102, 102)",
-                }}
-              >
-                체계적으로 정리된 비즈니스 도구는 당신의 머릿속을 비워, 눈앞의 동료 멤버에게 온전히 집중하게 만듭니다. 이는 더 깊은 관계를 형성하고, 더 가치 있는 리퍼럴을 창출하는{" "}
-                <strong className="text-bni-red">Givers Gain®의 진정한 시작</strong>입니다.
-              </p>
-              <blockquote className="border-l-4 border-bni-red pl-6 italic text-gray-600 text-lg">
-                "준비된 전문가는 기회가 왔을 때 망설이지 않습니다"
-              </blockquote>
-            </motion.div>
-            <motion.div variants={fadeInUp}>
-              <img
-                src={images.organizerSet}
-                alt="BNI 오거나이저 풀 구성"
-                className="rounded-2xl shadow-2xl w-full"
-              />
-            </motion.div>
+            <h3
+              className="mb-4"
+              style={{
+                fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
+                fontSize: "clamp(30px, 7vw, 48px)",
+                fontWeight: 400,
+                lineHeight: 1.15,
+                color: "rgb(23, 23, 23)",
+              }}
+            >
+              정리된 도구가 더 깊은 대화를 만듭니다
+            </h3>
+            <p
+              className="max-w-3xl mx-auto mb-6 leading-relaxed"
+              style={{
+                fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
+                fontSize: "16px",
+                fontWeight: 400,
+                lineHeight: "26px",
+                color: "rgb(102, 102, 102)",
+              }}
+            >
+              비즈니스 도구가 체계적으로 정돈되어 있을수록 당신은 상대와의 대화와{" "}
+              <strong className="text-bni-red">관계 형성에 더 깊이 집중</strong>할 수 있습니다.
+            </p>
+            <blockquote className="italic text-gray-600 text-lg max-w-2xl mx-auto">
+              "준비된 사람의 인상은 기회보다 먼저 도착합니다"
+            </blockquote>
           </motion.div>
+
+          <div className="max-w-[79.2rem] mx-auto">
+            <motion.div
+              className="relative"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+            >
+              <div className="relative aspect-[3/2] rounded-2xl overflow-hidden shadow-2xl bg-gray-100">
+                <motion.img
+                  key={interiorIndex}
+                  src={interiorImages[interiorIndex]}
+                  alt={`Interior view ${interiorIndex + 1}`}
+                  className="w-full h-full object-cover"
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5 }}
+                />
+                {interiorImages.length > 1 && (
+                  <>
+                    <button
+                      onClick={prevInterior}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors"
+                    >
+                      <ChevronLeft className="w-6 h-6" />
+                    </button>
+                    <button
+                      onClick={nextInterior}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors"
+                    >
+                      <ChevronRight className="w-6 h-6" />
+                    </button>
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm">
+                      {interiorLabels[interiorIndex] ?? ""}
+                    </div>
+                  </>
+                )}
+              </div>
+              {interiorImages.length > 1 && (
+                <div className="flex justify-center gap-2 mt-4">
+                  {interiorImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => goToInterior(index)}
+                      className={`w-2 h-2 rounded-full transition-all ${
+                        index === interiorIndex ? "bg-bni-red w-8" : "bg-gray-300"
+                      }`}
+                      aria-label={`내부 이미지 ${index + 1}로 이동`}
+                    />
+                  ))}
+                </div>
+              )}
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Interior Design Section */}
-      <section className="py-20 md:py-32 bg-white">
+      <section id="usage" className="pt-20 md:pt-32 pb-10 md:pb-16 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -403,17 +437,17 @@ export default function WelcomePackPage() {
               className="mb-4"
               style={{
                 fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
-                fontSize: "36px",
+                fontSize: "clamp(30px, 7vw, 48px)",
                 fontWeight: 400,
-                lineHeight: "40px",
+                lineHeight: 1.15,
                 color: "rgb(23, 23, 23)",
                 margin: "0 0 24px",
               }}
             >
-              세심하게 설계된<br />내부 구조
+              열면 바로 느껴지는<br />BNI의 기준
             </h2>
             <p
-              className="max-w-2xl mx-auto"
+              className="max-w-4xl mx-auto"
               style={{
                 fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
                 fontSize: "18px",
@@ -422,7 +456,9 @@ export default function WelcomePackPage() {
                 color: "rgb(102, 102, 102)",
               }}
             >
-              오거나이저 내부에는 "Changing the Way the World Does Business™ - 세상의 비즈니스 방법을 바꿉니다"라는 슬로건이 각인되어 있어, 열 때마다 BNI의 미션을 상기시켜 드립니다.
+              오거나이저 내부는 단순한 수납 공간이 아닙니다. BNI의 철학과 실용성이 함께 작동하도록 설계된{" "}
+              <br className="hidden md:block" />
+              비즈니스 실행의 중심 공간입니다.
             </p>
           </motion.div>
 
@@ -430,33 +466,38 @@ export default function WelcomePackPage() {
             {[
               {
                 title: "강렬한 BNI 레드 컬러",
-                desc: "열정과 전문성을 상징하는 BNI 레드 컬러와 선명한 BNI KOREA 로고가 멤버로서의 강력한 소속감과 자부심을 느끼게 합니다.",
-                img: "/assets/PhotoshopExtension_Image_2.png",
+                desc: "열정과 전문성을 상징하는 BNI 레드 컬러가 돋보이며, 한눈에 브랜드 아이덴티티를 전달합니다.",
+                img: "/assets/welcome/interior_red.jpg",
+                m32: true,
+                pos: "object-bottom md:object-center",
               },
               {
                 title: "Givers Gain® 손목 스트랩",
-                desc: '탈부착 가능한 손목 스트랩에 BNI의 핵심 철학 "Givers Gain®"이 각인되어 있어 언제 어디서든 BNI의 가치를 기억하고 실천할 수 있습니다.',
-                img: "/assets/PhotoshopExtension_Image_3.png",
+                desc: "탈부착 가능한 손목 스트랩에는 BNI의 핵심 철학인 Givers Gain®이 담겨 있어 언제 어디서나 브랜드의 가치를 자연스럽게 상기시켜 줍니다.",
+                img: "/assets/welcome/interior_strap.jpg",
               },
               {
-                title: "내부 슬로건 각인",
-                desc: '오거나이저를 열면 마주하는 "Changing the Way the World Does Business™ - 세상의 비즈니스 방법을 바꿉니다" 문구가 끊임없는 영감과 동기를 부여합니다.',
-                img: "/assets/PhotoshopExtension_Image_4.png",
+                title: "내부 슬로건 디테일",
+                desc: '오거나이저를 여는 순간 마주하는 "Changing the Way the World Does Business™" 문구는 당신의 비즈니스 태도와 방향성을 다시 한 번 정렬해 줍니다.',
+                img: "/assets/welcome/interior_slogan.jpg",
+                fit: "contain",
               },
               {
                 title: "체계적인 수납 시스템",
-                desc: "메쉬 포켓, 일반 포켓, 펜 홀더가 체계적으로 설계되어 명함, 책, 리퍼럴 슬립 등 필수 비즈니스 도구를 완벽하게 정리할 수 있습니다.",
-                img: "/assets/PhotoshopExtension_Image_5.png",
+                desc: "메쉬 포켓, 일반 포켓, 펜 홀더가 유기적으로 구성되어 명함, 가이드, 리퍼럴 자료, 필기 도구까지 필수 아이템을 한 번에 정리할 수 있습니다.",
+                img: "/assets/welcome/interior_storage.jpg",
+                m32: true,
               },
               {
-                title: "스마트 QR코드 태그",
-                desc: "탈착 가능한 QR코드 태그로 디지털 명함, BNI 커넥트 프로필에 즉시 연결하여 아날로그 만남을 디지털 관계로 전환합니다.",
-                img: "/assets/PhotoshopExtension_Image_6.png",
+                title: "스마트 QR코드 멀티 키 참",
+                desc: "아날로그 만남을 디지털 연결로 자연스럽게 확장할 수 있도록 QR 태그를 통해 BNI 코리아의 다양한 온라인 시스템에 빠르게 접속할 수 있습니다.",
+                img: "/assets/welcome/interior_qr.jpg",
+                m32: true,
               },
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
+                className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
@@ -465,104 +506,47 @@ export default function WelcomePackPage() {
                 <img
                   src={item.img}
                   alt={item.title}
-                  className="w-full h-48 object-cover rounded-lg mb-4"
+                  className={`w-full bg-gray-50 ${
+                    (item as any).fit === "contain" ? "object-contain" : "object-cover"
+                  } ${
+                    (item as any).m32 ? "aspect-[3/2] md:aspect-auto md:h-48" : "h-48"
+                  } ${(item as any).pos ?? ""}`}
+                  style={(item as any).fit === "contain" ? { backgroundColor: "#d12031" } : undefined}
                 />
-                <h3
-                  className="mb-2"
-                  style={{
-                    fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
-                    fontSize: "16px",
-                    fontWeight: 400,
-                    lineHeight: "24px",
-                    color: "rgb(23, 23, 23)",
-                  }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  className="leading-relaxed"
-                  style={{
-                    fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
-                    fontSize: "14px",
-                    fontWeight: 400,
-                    lineHeight: "22.75px",
-                    color: "rgb(102, 102, 102)",
-                  }}
-                >
-                  {item.desc}
-                </p>
+                <div className="p-6">
+                  <h3
+                    className="mb-2"
+                    style={{
+                      fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
+                      fontSize: "16px",
+                      fontWeight: 400,
+                      lineHeight: "24px",
+                      color: "rgb(23, 23, 23)",
+                    }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p
+                    className="leading-relaxed"
+                    style={{
+                      fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
+                      fontSize: "14px",
+                      fontWeight: 400,
+                      lineHeight: "22.75px",
+                      color: "rgb(102, 102, 102)",
+                    }}
+                  >
+                    {item.desc}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Product Details Section */}
-      <section id="usage" className="pt-20 md:pt-32 pb-4 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-16"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-          >
-            <p className="text-sm text-gray-600 font-normal tracking-wider uppercase mb-2">
-              Product Details
-            </p>
-            <h2 className="text-4xl md:text-5xl font-normal mb-4">세심하게 설계된<br />내부 구조</h2>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              세심하게 설계된 모든 디테일이 당신의 비즈니스를 더욱 체계적으로 만들어 드립니다
-            </p>
-          </motion.div>
-
-        </div>
-      </section>
-
-      {/* QR Code Tag Section */}
-      <section className="py-20 md:py-32 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeInUp}
-            >
-              <img
-                src="/assets/a.png"
-                alt="QR코드 태그 클로즈업"
-                className="rounded-2xl shadow-2xl w-full"
-              />
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeInUp}
-            >
-              <p className="text-sm text-gray-600 font-normal tracking-wider uppercase mb-2">
-                Smart Connection
-              </p>
-              <h2 className="text-3xl md:text-4xl font-normal mb-4">QR코드 태그 상세</h2>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                Givers Gain® 손목 스트랩에 부착된 스마트 QR코드 태그는 당신의 디지털 프로필과 즉시 연결됩니다. 한 번의 스캔으로 BNI 커넥트, 개인 포트폴리오, SNS 프로필까지 모든 정보를 전달할 수 있습니다.
-              </p>
-              <div className="space-y-2">
-                {["BNI 커넥트 프로필 즉시 연결", "개인 링크 커스터마이징 가능", "탈부착 가능한 디자인"].map((item, i) => (
-                  <div key={i} className="flex items-center text-gray-700">
-                    <span className="text-bni-red mr-2">✓</span>
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Knowledge & Philosophy Section */}
-      <section id="content" className="py-20 md:py-32 bg-white">
+      <section id="content" className="pt-10 md:pt-16 pb-20 md:pb-32 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -576,7 +560,7 @@ export default function WelcomePackPage() {
             </p>
             <h2 className="text-4xl md:text-5xl font-normal mb-4">성공의 토대</h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              지식과 철학을 담은 콘텐츠로 BNI 시스템을 깊이 이해하고 비즈니스에 적용하세요
+              성장은 감각이 아니라 이해에서 시작됩니다. 지식과 철학을 담은 콘텐츠를 통해 BNI 시스템을 더 깊이 이해하고, 실제 비즈니스에 더 전략적으로 적용할 수 있습니다.
             </p>
           </motion.div>
 
@@ -586,19 +570,22 @@ export default function WelcomePackPage() {
                 category: "핵심 철학 도서",
                 title: "당신은 기버입니까?",
                 desc: 'BNI의 근간이 되는 "Givers Gain®" 철학을 깊이 있게 이해하고, 비즈니스 현장에서 구체적으로 실천하는 방법을 안내하는 필독서입니다.',
-                img: "/assets/icon-book.svg",
+                img: "/assets/welcome/found_giver.jpg",
+                cover: true,
               },
               {
                 category: "가이드라인",
                 title: "BNI 멤버 규정",
                 desc: "BNI 시스템의 원칙과 규칙을 명확하게 제시하며, 모든 멤버가 공정하고 투명한 환경에서 활동할 수 있는 기반이 됩니다.",
-                img: "/assets/icon-document.svg",
+                img: "/assets/welcome/found_rules.jpg",
+                cover: true,
               },
               {
                 category: "비즈니스 성장",
                 title: "성장 전략 자료",
                 desc: "BNI가 수십 년간 검증해 온 체계적인 성장 전략을 통해, 당신의 비즈니스를 한 단계 더 도약시킬 통찰력을 제공합니다.",
-                img: "/assets/icon-growth.svg",
+                img: "/assets/welcome/found_growth.jpg",
+                cover: true,
               },
             ].map((item, index) => (
               <motion.div
@@ -612,7 +599,7 @@ export default function WelcomePackPage() {
                 <img
                   src={item.img}
                   alt={item.title}
-                  className="w-full h-64 object-contain bg-gray-50"
+                  className={`w-full aspect-[3/2] bg-gray-50 ${(item as any).cover ? "object-cover" : "object-contain"}`}
                 />
                 <div className="p-6">
                   <p className="text-xs text-gray-500 font-normal mb-2">{item.category}</p>
@@ -623,16 +610,6 @@ export default function WelcomePackPage() {
             ))}
           </div>
 
-          <motion.div
-            className="text-center"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-          >
-            <p className="text-xl text-gray-700 mb-2">머릿속에 성공의 청사진을 그렸다면</p>
-            <p className="text-xl font-normal text-gray-900">이제 손에 날카로운 펜을 쥘 시간입니다</p>
-          </motion.div>
         </div>
       </section>
 
@@ -649,9 +626,13 @@ export default function WelcomePackPage() {
             <p className="text-sm text-gray-600 font-normal tracking-wider uppercase mb-2">
               Essential Tools
             </p>
-            <h2 className="text-4xl md:text-5xl font-normal mb-4">실행을 위한 필수 도구</h2>
+            <h2 className="text-4xl md:text-5xl font-normal mb-4">
+              작은 도구가 큰 차이를{" "}
+              <br className="md:hidden" />
+              만듭니다
+            </h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              위대한 아이디어를 기록하고, 소중한 관계를 연결하는 작은 도구들이 결정적인 차이를 만듭니다
+              기록은 신뢰를 남기고, 연결은 기회를 만듭니다. BNI Essential Tools는 당신의 아이디어를 더 정확하게 기록하고, 소중한 관계를 더 빠르게 연결하기 위한 실전형 도구들입니다.
             </p>
           </motion.div>
 
@@ -659,32 +640,44 @@ export default function WelcomePackPage() {
             {[
               {
                 title: "BNI 공식 펜",
-                desc: "BNI 로고가 새겨진 깔끔한 흰색 펜은 주간 미팅에서의 발표 내용 기록, 1-2-1 미팅의 핵심 사항 정리, 그리고 동료 멤버에게 감사를 전하는 모든 순간에 당신의 신뢰를 더합니다.",
-                features: ["깔끔한 화이트 디자인", "BNI 로고 각인", "부드러운 필기감"],
-                img: "/assets/icon-pen.svg",
+                desc: "생각을 기록하는 순간에도 브랜드는 남습니다. 깔끔한 화이트 바디와 BNI 로고 디테일이 더해진 공식 펜은 주간 미팅 메모, 1-2-1 핵심 정리, 감사의 메시지까지 모든 비즈니스 순간에 신뢰감 있는 인상을 더해줍니다.",
+                features: ["깔끔한 화이트 디자인", "BNI 로고 각인", "부드럽고 안정적인 필기감"],
+                img: "/assets/welcome/tool_pen.jpg",
               },
               {
-                title: "스마트 QR코드 태그",
-                desc: "아날로그 첫인상을 즉각적인 디지털 관계로 전환하는 관문입니다. 단 한 번의 스캔으로 당신의 전문성을 각인시키세요.",
-                features: ["BNI 커넥트 프로필 연결", "개인 포트폴리오 링크", "디지털 명함 교환"],
-                img: "/assets/icon-qr.svg",
+                title: "스마트 QR코드 멀티 키 참",
+                desc: "가장 빠르게, 가장 스마트하게 연결되는 방식입니다. 단 한 번의 스캔으로 BNI 코리아의 다양한 온라인 시스템과 연결되어 현장의 만남을 즉시 다음 단계의 관계로 확장할 수 있습니다.",
+                features: ["빠르고 직관적인 연결", "다양한 온라인 시스템 활용", "효율적인 디지털 네트워킹 지원"],
+                img: "/assets/welcome/tool_qr.jpg",
+              },
+              {
+                title: "멤버 명찰",
+                desc: "주간 미팅과 네트워킹 자리에서 당신의 이름과 소속을 명확히 전달합니다. 첫 만남에서부터 신뢰감 있는 인상을 남기는 BNI 멤버의 필수 아이템입니다.",
+                features: ["이름·챕터 표기", "깔끔한 BNI 디자인", "간편한 착용"],
+                img: "/assets/welcome/tool_namecard.jpg",
+              },
+              {
+                title: "멤버 뱃지",
+                desc: "BNI 멤버로서의 자부심을 상징하는 공식 뱃지입니다. 어디서든 글로벌 BNI 네트워크의 일원임을 드러내며 멤버 간 유대감을 강화합니다.",
+                features: ["BNI 공식 엠블럼", "고급 메탈 마감", "소속감과 자부심"],
+                img: "/assets/welcome/tool_badge.jpg",
               },
             ].map((tool, index) => (
               <motion.div
                 key={index}
-                className="bg-white rounded-xl p-8 shadow-lg"
+                className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeInUp}
               >
-                <div className="flex items-start gap-6 mb-6">
+                <div className="flex flex-col sm:flex-row sm:items-stretch h-full">
                   <img
                     src={tool.img}
                     alt={tool.title}
-                    className="w-32 h-32 object-cover rounded-lg"
+                    className="w-full h-56 sm:h-auto sm:w-1/2 sm:self-stretch object-cover bg-gray-50 flex-shrink-0"
                   />
-                  <div>
+                  <div className="w-full sm:w-1/2 p-6 sm:p-8">
                     <h3 className="text-2xl font-normal mb-3">{tool.title}</h3>
                     <p className="text-gray-700 leading-relaxed mb-4">{tool.desc}</p>
                     <div className="space-y-2">
@@ -702,55 +695,31 @@ export default function WelcomePackPage() {
           </div>
 
           <motion.div
-            className="grid md:grid-cols-2 gap-12 items-center"
+            className="mt-16 max-w-6xl mx-auto"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
           >
-            <motion.div variants={fadeInUp}>
-              <img
-                src="/assets/KakaoTalk_20251213_145004065_11.jpg"
-                alt="QR코드 태그와 Givers Gain 스트랩"
-                className="rounded-2xl shadow-2xl w-full"
-              />
-            </motion.div>
-            <motion.div variants={fadeInUp}>
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <img
-                  src="/assets/PhotoshopExtension_Image_4.png"
-                  alt="QR 태그"
-                  className="rounded-lg"
-                />
-                <div className="space-y-4">
-                  <img
-                    src="/assets/PhotoshopExtension_Image_5.png"
-                    alt="스트랩"
-                    className="rounded-lg"
-                  />
-                  <img
-                    src="/assets/pouch_girl.png"
-                    alt="파우치 활용 모습"
-                    className="rounded-lg"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-              </div>
-              <h3 className="text-2xl font-normal mb-4">디지털과 아날로그의 완벽한 연결</h3>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                QR코드 태그는 오거나이저에 부착하거나 분리하여 사용할 수 있습니다. 명함을 건네는 전통적인 방식과 디지털 연결을 동시에 제공하여, 어떤 상황에서도 효과적인 네트워킹이 가능합니다.
-              </p>
-              <div className="space-y-2">
-                {["즉시 연결", "무제한 스캔"].map((item, i) => (
-                  <div key={i} className="flex items-center text-gray-700">
-                    <span className="text-bni-red mr-2">✓</span>
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+            <p className="text-center text-sm text-gray-400 mb-4">
+              P.S. 어디서 봤더라? 싶다면 맞습니다. 또 그 빨간 오거나이저예요 🙂
+            </p>
+
+            {/* 한 줄 정렬(justified row) — 높이 통일, scenes는 넓은 타일로 제 크기 유지 */}
+            <div className="flex flex-wrap md:flex-nowrap justify-center items-center gap-2 [&>img]:h-28 md:[&>img]:h-40 [&>img]:w-auto [&>img]:object-cover [&>img]:rounded-lg [&>img]:shadow-sm">
+              <img src="/assets/welcome/lifestyle_main.png" alt="BNI 오거나이저와 함께하는 비즈니스 리더" />
+              <img src="/assets/welcome/lifestyle_7.png" alt="미팅을 준비하는 BNI 멤버" />
+              <img src="/assets/welcome/lifestyle_11.png" alt="이동 중에도 업무를 이어가는 BNI 멤버" />
+              <img src="/assets/welcome/lifestyle_12.png" alt="오거나이저와 함께 이동하는 BNI 멤버" />
+              <img src="/assets/welcome/lifestyle_13.png" alt="출장길의 BNI 멤버" />
+              <img src="/assets/welcome/lifestyle_5.png" alt="비즈니스 현장의 BNI 멤버" />
+              <img src="/assets/welcome/lifestyle_desk.png" alt="업무 공간에서 BNI 오거나이저를 정리하는 멤버" />
+              <img src="/assets/welcome/lifestyle_4.png" alt="오거나이저로 업무를 정리하는 BNI 멤버" />
+              <img src="/assets/welcome/lifestyle_6.png" alt="오거나이저를 들고 이동하는 BNI 멤버" />
+              <img src="/assets/welcome/lifestyle_15.png" alt="오거나이저 구성품을 살펴보는 BNI 멤버" />
+            </div>
           </motion.div>
+
         </div>
       </section>
 
@@ -767,13 +736,15 @@ export default function WelcomePackPage() {
               className="text-4xl md:text-6xl font-normal mb-6"
               variants={fadeInUp}
             >
-              당신의 성공적인 시작을<br />응원합니다
+              성공적인 시작은 우연이 아니라<br />준비에서 나옵니다
             </motion.h2>
             <motion.p
               className="text-lg md:text-xl mb-8 opacity-90 max-w-3xl mx-auto leading-relaxed"
               variants={fadeInUp}
             >
-              BNI 멤버십 키트는 단순한 물품의 집합이 아닙니다. 이것은 BNI 코리아가 신규 멤버 한 분 한 분의 성공적인 비즈니스 여정을 위해 제공하는 체계적인 지원 시스템의 시작이자, 당신의 의지와 약속을 담는 그릇입니다.
+              BNI 멤버십 키트는 단순한 물품의 집합이 아닙니다. 이것은 더 정돈된 태도, 더 체계적인 실행, 더 강한 연결을 위한 BNI 코리아의 첫 번째 지원 시스템입니다.
+              <br className="hidden md:block" />
+              당신의 첫인상부터 실행 방식까지, 더 프로페셔널한 시작을 완성해 보세요.
             </motion.p>
             <motion.div variants={fadeInUp} className="mb-8">
               <blockquote className="text-2xl md:text-3xl font-normal italic mb-4">
