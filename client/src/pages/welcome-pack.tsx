@@ -736,7 +736,11 @@ export default function WelcomePackPage() {
               className="text-4xl md:text-6xl font-normal mb-6"
               variants={fadeInUp}
             >
-              성공적인 시작은 우연이 아니라<br />준비에서 나옵니다
+              성공적인 시작은{" "}
+              <br className="md:hidden" />
+              우연이 아니라
+              <br />
+              준비에서 나옵니다
             </motion.h2>
             <motion.p
               className="text-lg md:text-xl mb-8 opacity-90 max-w-3xl mx-auto leading-relaxed"
