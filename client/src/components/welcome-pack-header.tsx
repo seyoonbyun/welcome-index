@@ -1,17 +1,17 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Link } from "wouter";
-import { Menu, X, Briefcase, LayoutGrid, BookOpen, Sparkles, ArrowRight } from "lucide-react";
+import { Menu, X, Briefcase, LayoutGrid, BookOpen, Sparkles, QrCode } from "lucide-react";
 
 const navItems = [
-  { label: "오거나이저", href: "#organizer", icon: Briefcase },
-  { label: "내부 구조", href: "#usage", icon: LayoutGrid },
-  { label: "콘텐츠", href: "#content", icon: BookOpen },
-  { label: "브랜드 아이템", href: "#brand", icon: Sparkles },
+  { label: "오거나이저", labelEn: "Organizer", href: "#organizer", icon: Briefcase },
+  { label: "주요 특징", labelEn: "Key Features", href: "#usage", icon: LayoutGrid },
+  { label: "콘텐츠", labelEn: "Contents", href: "#content", icon: BookOpen },
+  { label: "핵심툴", labelEn: "Essential Tools", href: "#brand", icon: Sparkles },
 ];
 
 export default function WelcomePackHeader() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(true);
 
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
@@ -53,7 +53,7 @@ export default function WelcomePackHeader() {
           </Link>
 
           {/* 데스크탑 네비게이션 */}
-          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+          <nav className="hidden md:flex items-center gap-8 lg:gap-10">
             {navItems.map((item, index) => (
               <motion.div
                 key={item.href}
@@ -64,28 +64,38 @@ export default function WelcomePackHeader() {
                 <a
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="text-sm font-medium transition-colors text-gray-700 hover:text-bni-red cursor-pointer"
+                  className="group relative inline-flex items-center justify-center text-base font-medium transition-colors text-gray-700 hover:text-bni-red cursor-pointer"
                   style={{
                     fontFamily: 'Inter, "Open Sans", sans-serif',
-                    fontSize: "14px",
+                    fontSize: "16px",
                     fontWeight: 500,
                   }}
                 >
-                  {item.label}
+                  <span className="whitespace-nowrap transition-opacity duration-200 group-hover:opacity-0">
+                    {item.label}
+                  </span>
+                  <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                    {item.labelEn}
+                  </span>
                 </a>
               </motion.div>
             ))}
 
             <Link href="/onboarding">
               <span
-                className="text-sm font-medium text-bni-red hover:underline cursor-pointer"
+                className="group relative inline-flex items-center justify-center text-base font-medium text-bni-red cursor-pointer"
                 style={{
                   fontFamily: 'Inter, "Open Sans", sans-serif',
-                  fontSize: "14px",
+                  fontSize: "16px",
                   fontWeight: 500,
                 }}
               >
-                온보딩 →
+                <span className="flex items-center gap-1.5 whitespace-nowrap transition-opacity duration-200 group-hover:opacity-0">
+                  온보딩 <QrCode className="w-4 h-4" />
+                </span>
+                <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-1.5 whitespace-nowrap opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                  Onboarding <QrCode className="w-4 h-4" />
+                </span>
               </span>
             </Link>
           </nav>
@@ -125,14 +135,17 @@ export default function WelcomePackHeader() {
                   <span className="text-[11px] leading-tight text-center">{item.label}</span>
                 </a>
               ))}
-              <Link
-                href="/onboarding"
-                className="flex flex-1 flex-col items-center gap-1.5 py-1 text-bni-red cursor-pointer"
-                onClick={() => setMenuOpen(false)}
-              >
-                <ArrowRight className="w-6 h-6" />
-                <span className="text-[11px] leading-tight text-center">온보딩</span>
-              </Link>
+              <div className="flex flex-1 justify-center">
+                <Link href="/onboarding">
+                  <span
+                    className="flex flex-col items-center gap-1.5 py-1 text-bni-red cursor-pointer"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <QrCode className="w-6 h-6" />
+                    <span className="text-[11px] leading-tight text-center">온보딩</span>
+                  </span>
+                </Link>
+              </div>
             </div>
           </motion.nav>
         )}

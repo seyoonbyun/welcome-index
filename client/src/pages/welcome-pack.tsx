@@ -112,19 +112,24 @@ export default function WelcomePackPage() {
 
       {/* Hero Section */}
       <motion.section
-        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-200"
+        className="relative flex flex-col pt-20 md:pt-0 md:min-h-screen md:items-center md:justify-center overflow-hidden bg-white"
         style={{ opacity: heroOpacity, scale: heroScale }}
       >
-        {/* 아주 연한 제품 실루엣 배경 (5~8% 투명도, 그레이스케일) */}
-        <motion.img
-          src="/assets/pouch_out.jpg"
-          alt=""
+        {/* 히어로 영상 (모바일: 흐름 블록, 전체 표시 contain / 데스크탑: 배경 꽉 채움 cover) */}
+        <video
+          className="pointer-events-none relative z-0 w-full h-auto object-contain md:absolute md:inset-0 md:h-full md:object-cover md:object-center"
+          src="/assets/welcome/hero.mp4"
+          poster="/assets/pouch_out.jpg"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
           aria-hidden="true"
-          className="pointer-events-none select-none absolute inset-0 m-auto z-0 w-auto max-h-[70vh] max-w-[85%] grayscale opacity-[0.07]"
-          animate={{ y: [0, -14, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
-        <div className="relative z-10 container mx-auto px-4 py-32 text-center">
+        {/* 가독성용 라이트 오버레이 */}
+        <div className="hidden md:block absolute inset-0 z-0 bg-white/55 pointer-events-none" />
+        <div className="relative z-10 container mx-auto px-4 pt-10 pb-28 md:py-32 text-center">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -758,8 +763,7 @@ export default function WelcomePackPage() {
             </motion.div>
             <motion.div variants={fadeInUp}>
               <Button
-                size="lg"
-                className="bg-white text-bni-red hover:bg-gray-100 rounded-full px-10 py-6 text-lg font-normal shadow-xl"
+                className="bg-white text-bni-red hover:bg-gray-100 rounded-full shadow-xl font-normal h-10 px-6 text-sm md:h-11 md:px-10 md:py-6 md:text-lg"
                 onClick={scrollToTop}
               >
                 BNI와 함께 시작하기
