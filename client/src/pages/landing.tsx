@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import welcomeImage from "@assets/welcome-pack-index-color_1768900200000.png";
+import welcomeImage from "@assets/welcome-pack-index-color_1768900200000.jpg";
 import qrCodeImage from "@assets/bni-qr_1768900000000.svg";
 import PouchCredit from "@/components/pouch-credit";
 

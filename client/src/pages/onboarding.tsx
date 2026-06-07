@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import PouchCredit from "@/components/pouch-credit";
-import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, ArrowDown, Info, ShoppingBag, UserPlus, CheckCircle, MapPin, Package, Home, Users } from "lucide-react";
+import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, Pointer, Info, ShoppingBag, UserPlus, CheckCircle, MapPin, Package, Home, Users } from "lucide-react";
 
 interface ResourceLink {
   title: string;
@@ -644,7 +644,7 @@ export default function OnboardingPage() {
             }`}
           >
             {completed ? "온보딩 가이드 다시 보기" : "신규 멤버가 먼저 확인해야 할 툴 3단계 확인하기!"}
-            <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
+            <Pointer className="w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:scale-110" />
           </button>
         </div>
 
