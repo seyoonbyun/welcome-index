@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
-import welcomeImage from "@assets/welcome-pack-final_1768900100000.jpg";
+import welcomeImage from "@assets/welcome-pack-index-color_1768900200000.png";
 import qrCodeImage from "@assets/bni-qr_1768900000000.svg";
 import PouchCredit from "@/components/pouch-credit";
 
@@ -96,7 +96,7 @@ export default function LandingPage() {
           <div className="relative">
             <Link href="/welcome_kit" data-testid="link-to-welcomepack">
               <div className="group cursor-pointer">
-                <div className="overflow-hidden rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-xl group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2 w-[90vw] md:w-[48rem] max-w-full aspect-[1600/1195] bg-white animate-pouch-settle">
+                <div className="relative overflow-hidden rounded-lg shadow-lg transition-all duration-300 group-hover:shadow-xl group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2 w-[90vw] md:w-[48rem] max-w-full aspect-[1600/1195] bg-white animate-pouch-settle">
                   <img
                     src={welcomeImage}
                     alt="BNI Korea 웰컴 키트 구성"
@@ -107,6 +107,7 @@ export default function LandingPage() {
                     fetchPriority="high"
                     decoding="async"
                   />
+                  <div className="absolute inset-0 bg-white/25 pointer-events-none" aria-hidden="true" />
                 </div>
               </div>
             </Link>
@@ -131,18 +132,18 @@ export default function LandingPage() {
                 {variant === "b" && showQrHighlight && (
                   <>
                     <span
-                      className="absolute inset-0 rounded-lg border-4 border-[#2171b5] animate-ping opacity-75"
+                      className="absolute inset-0 rounded-lg border-4 border-[#001A9E] animate-ping opacity-75"
                       aria-hidden="true"
                     />
                     <span
-                      className="absolute -inset-2 rounded-xl border-2 border-[#2171b5]/60 animate-ping opacity-50"
+                      className="absolute -inset-2 rounded-xl border-2 border-[#001A9E]/60 animate-ping opacity-50"
                       style={{ animationDelay: "0.4s" }}
                       aria-hidden="true"
                     />
                   </>
                 )}
                 <div
-                  className={`w-full h-full rounded-lg border-4 border-[#2171b5] transition-all duration-300 hover:border-[#2171b5]/80 relative ${innerBoxAnimation} ${
+                  className={`w-full h-full rounded-lg border-4 border-[#001A9E] transition-all duration-300 hover:border-[#001A9E]/80 relative ${innerBoxAnimation} ${
                     variant === "b" && showQrHighlight ? "animate-qr-zoom-in" : ""
                   }`}
                   style={{ boxShadow: innerBoxShadow }}
@@ -155,7 +156,7 @@ export default function LandingPage() {
                   }`}
                 >
                   <span
-                    className={`font-medium text-[#2171b5] bg-background/90 rounded shadow-sm border border-[#2171b5]/20 ${
+                    className={`font-medium text-[#001A9E] bg-background/90 rounded shadow-sm border border-[#001A9E]/20 ${
                       variant === "c"
                         ? "text-[10px] md:text-xs px-2 py-0.5"
                         : isEnhanced
@@ -173,7 +174,7 @@ export default function LandingPage() {
 
           <div className="mt-8 flex justify-center">
             <Link href="/welcome_kit" data-testid="link-to-welcomepack-text">
-              <div className="group cursor-pointer inline-flex items-center gap-2 text-white font-semibold text-sm md:text-base px-7 py-3.5 rounded-xl bg-gradient-to-b from-[#2c87d1] to-[#1a5a94] shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_4px_0_#143d66,0_10px_22px_-4px_rgba(20,61,102,0.55)] hover:from-[#3593de] hover:to-[#1c629f] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_6px_0_#143d66,0_18px_32px_-6px_rgba(20,61,102,0.7)] hover:-translate-y-0.5 hover:scale-[1.04] active:translate-y-1 active:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_0_0_#143d66,0_4px_10px_-2px_rgba(20,61,102,0.4)] active:scale-100 transition-all duration-200 ease-out">
+              <div className="group cursor-pointer inline-flex items-center gap-2 text-white font-semibold text-sm md:text-base px-7 py-3.5 rounded-xl bg-gradient-to-b from-[#001A9E] to-[#001A9E] shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_4px_0_#001266,0_10px_22px_-4px_rgba(20,61,102,0.55)] hover:from-[#1A36BF] hover:to-[#001A9E] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_6px_0_#001266,0_18px_32px_-6px_rgba(20,61,102,0.7)] hover:-translate-y-0.5 hover:scale-[1.04] active:translate-y-1 active:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_0_0_#001266,0_4px_10px_-2px_rgba(20,61,102,0.4)] active:scale-100 transition-all duration-200 ease-out">
                 웰컴팩 구성 자세히 보러가기
                 <span className="transition-transform group-hover:translate-x-1">→</span>
               </div>
