@@ -84,11 +84,11 @@ export default function LandingPage() {
     <div className="min-h-screen bg-background flex flex-col">
     <div className="flex-1 flex flex-col items-center justify-center px-4 py-8">
       <div className="max-w-4xl mx-auto text-center">
-        <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4" data-testid="text-landing-title">
+        <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-4" data-testid="text-landing-title" style={{ fontFamily: '"Pretendard Variable", Pretendard, sans-serif' }}>
           <span className="block md:inline">BNI KOREA</span>
           <span className="block md:inline"> 멤버 온보딩 키트</span>
         </h1>
-        <p className="text-lg text-muted-foreground mb-8">
+        <p className="text-lg text-muted-foreground mb-8" style={{ fontFamily: '"Pretendard Variable", Pretendard, sans-serif' }}>
           QR 코드를 클릭하여 온보딩 리소스를 확인하세요
         </p>
 
