@@ -475,6 +475,13 @@ export default function OnboardingPage() {
         <footer className="mt-16 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex flex-wrap items-center justify-center gap-6 order-1 md:order-2">
+              <Link
+                href="/"
+                className="text-sm text-muted-foreground hover:text-foreground focus-visible:text-foreground transition-colors focus:outline-none focus-visible:underline"
+                data-testid="link-footer-home"
+              >
+                홈
+              </Link>
               <a
                 href="https://pay.bnikorea.com/"
                 target="_blank"

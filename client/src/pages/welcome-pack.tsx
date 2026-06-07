@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { Link } from "wouter";
 import WelcomePackHeader from "@/components/welcome-pack-header";
 import PouchCredit from "@/components/pouch-credit";
 import { Button } from "@/components/ui/button";
@@ -766,10 +767,10 @@ export default function WelcomePackPage() {
             </motion.div>
             <motion.div variants={fadeInUp}>
               <Button
+                asChild
                 className="bg-white text-bni-red hover:bg-gray-100 rounded-full shadow-xl font-normal h-10 px-6 text-sm md:h-11 md:px-10 md:py-6 md:text-lg"
-                onClick={scrollToTop}
               >
-                BNI와 함께 시작하기
+                <Link href="/" data-testid="link-cta-home">BNI와 함께 시작하기</Link>
               </Button>
             </motion.div>
           </motion.div>
