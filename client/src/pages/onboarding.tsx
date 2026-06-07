@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import PouchCredit from "@/components/pouch-credit";
-import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, Info, ShoppingBag, UserPlus, CheckCircle, MapPin, Package } from "lucide-react";
+import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, Info, ShoppingBag, UserPlus, CheckCircle, MapPin, Package, Home } from "lucide-react";
 
 interface ResourceLink {
   title: string;
@@ -350,8 +350,26 @@ function CategorySection({ title, links }: { title: string; links: ResourceLink[
 export default function OnboardingPage() {
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-5xl mx-auto px-4 py-8 md:px-8 md:py-16">
-        <header className="text-center mb-10 md:mb-16">
+      <div className="relative max-w-5xl mx-auto px-4 py-8 md:px-8 md:py-16">
+        <nav className="absolute top-4 right-4 md:top-6 md:right-8 z-50 flex items-center gap-1">
+          <Link
+            href="/"
+            aria-label="홈"
+            data-testid="nav-home"
+            className="inline-flex items-center justify-center w-9 h-9 rounded-md text-muted-foreground hover-elevate active-elevate-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <Home className="w-5 h-5" />
+          </Link>
+          <Link
+            href="/welcome_kit"
+            aria-label="툴"
+            data-testid="nav-tools"
+            className="inline-flex items-center justify-center w-9 h-9 rounded-md text-muted-foreground hover-elevate active-elevate-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <Package className="w-5 h-5" />
+          </Link>
+        </nav>
+        <header className="text-center mt-10 md:mt-4 mb-10 md:mb-16">
           <Link href="/welcome_kit" data-testid="link-header-to-welcomekit">
             <div className="group cursor-pointer relative inline-block mb-6">
               <div className="mb-2">
