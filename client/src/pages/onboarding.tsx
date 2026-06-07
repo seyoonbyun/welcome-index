@@ -142,6 +142,7 @@ function CoachMark({
   nextStepNo,
   onNext,
   onEnd,
+  textClassName = "text-sm sm:text-base md:text-lg",
 }: {
   show: boolean;
   text: string;
@@ -149,18 +150,19 @@ function CoachMark({
   nextStepNo: number;
   onNext: () => void;
   onEnd: () => void;
+  textClassName?: string;
 }) {
   return (
     <div
       role="dialog"
       aria-hidden={!show}
-      className={`absolute left-1/2 -translate-x-1/2 bottom-full mb-3 z-[60] w-[420px] max-w-[88vw] transition-all duration-200 ${
+      className={`absolute inset-x-0 bottom-full mb-3 z-[60] transition-all duration-200 ${
         show ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-1 invisible pointer-events-none"
       }`}
       data-testid="coach-mark"
     >
       <div className="relative rounded-xl bg-card border border-primary/30 shadow-2xl p-4 text-left">
-        <p className="text-sm text-foreground leading-relaxed break-keep whitespace-pre-line">{text}</p>
+        <p className={`${textClassName} text-foreground leading-relaxed break-keep whitespace-pre-line`}>{text}</p>
         <div className="mt-3 flex items-center justify-end">
           <button
             type="button"
@@ -428,6 +430,7 @@ function PowerTeamWorkflowSection({
         text={"이제 PowerTeam에서 나의 활동을 기록해보세요.\n나와 챕터 전체의 성과를 확인하는 시작점입니다."}
         isLast={false}
         nextStepNo={3}
+        textClassName="text-base sm:text-lg md:text-xl"
         onNext={onNext ?? (() => {})}
         onEnd={onEnd ?? (() => {})}
       />
@@ -594,8 +597,8 @@ export default function OnboardingPage() {
           >
             <div className="relative overflow-hidden rounded-xl border border-border bg-card px-5 py-6 md:px-6 md:py-8 shadow-sm hover-elevate active-elevate-2 transition-all duration-200">
               <div className="absolute top-3 right-3 md:top-4 md:right-4 z-10">
-                <Badge className="bg-primary/10 text-primary border-0 text-[10px] md:text-xs font-semibold hover:bg-primary/10">
-                  지금 진행 중인 챌린지
+                <Badge className="bg-primary/10 text-primary border-0 text-[10px] md:text-xs font-semibold hover:bg-primary/10 badge-pulse">
+                  HOT !! 지금 진행중인 챌린지
                 </Badge>
               </div>
 

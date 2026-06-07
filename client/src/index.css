@@ -315,3 +315,17 @@
 .cta-pulse {
   animation: cta-pulse 2.2s ease-out infinite;
 }
+
+@keyframes badge-pulse {
+  0% {
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.5);
+  }
+  60%,
+  100% {
+    box-shadow: 0 0 0 7px hsl(var(--primary) / 0);
+  }
+}
+
+.badge-pulse {
+  animation: badge-pulse 1.5s ease-out infinite;
+}
