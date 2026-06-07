@@ -33,9 +33,9 @@ const essentialSystems: ResourceLink[] = [
 
 const communityLinks: ResourceLink[] = [
   {
-    title: "Guardian 챌린지",
-    description: "진행 중인 챌린지를 확인하고 참여하세요",
-    url: "https://www.guardian-bnikorea.com/",
+    title: "내셔널 컨퍼런스",
+    description: "BNI Korea 내셔널 컨퍼런스 정보를 확인하세요",
+    url: "https://www.nc26-bnikorea.com",
     icon: Trophy,
   },
   {
@@ -60,9 +60,9 @@ const communityLinks: ResourceLink[] = [
 
 const officialChannels: ResourceLink[] = [
   {
-    title: "BNI Korea 웹사이트",
-    description: "BNI Korea 공식 홈페이지",
-    url: "https://www.bnikorea.com",
+    title: "BNI KOREA 공식 홈페이지",
+    description: "bnikorea.com",
+    url: "http://bnikorea.com/ko/index",
     icon: Building2,
   },
   {
@@ -232,18 +232,62 @@ function PowerTeamWorkflowSection() {
           </a>
         </div>
         
-        <div className="flex items-center justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <a
-            href="https://www.powerteam-bnikorea.com"
+            href="https://www.youtube.com/watch?v=cOG550Q77Zk"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-primary hover:underline focus:outline-none focus-visible:underline"
-            data-testid="link-powerteam-more"
+            className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
+            data-testid="link-member-manual"
           >
-            PowerTeam 도구에 대해 자세히 알아보기
-            <ArrowRight className="w-4 h-4" />
+            <div className="p-4 rounded-lg border border-border hover-elevate active-elevate-2 transition-all duration-200 h-full flex items-center gap-3">
+              <div className="flex-shrink-0 w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
+                <Youtube className="w-5 h-5 text-primary" />
+              </div>
+              <div className="flex-1 min-w-0 flex items-center gap-2">
+                <h4 className="font-medium text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors">
+                  멤버 매뉴얼 바로가기
+                </h4>
+                <ExternalLink className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
+              </div>
+            </div>
+          </a>
+
+          <a
+            href="https://www.youtube.com/watch?v=vZcyOdyu6bg"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
+            data-testid="link-admin-manual"
+          >
+            <div className="p-4 rounded-lg border border-border hover-elevate active-elevate-2 transition-all duration-200 h-full flex items-center gap-3">
+              <div className="flex-shrink-0 w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
+                <Youtube className="w-5 h-5 text-primary" />
+              </div>
+              <div className="flex-1 min-w-0 flex items-center gap-2">
+                <h4 className="font-medium text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors">
+                  관리자 매뉴얼 바로가기
+                </h4>
+                <ExternalLink className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
+              </div>
+            </div>
           </a>
         </div>
+
+        <a
+          href="https://www.powerteam-bnikorea.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-full group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
+          data-testid="link-powerteam-more"
+        >
+          <div className="p-4 rounded-lg border border-border hover-elevate active-elevate-2 transition-all duration-200 flex items-center justify-center gap-2">
+            <span className="font-medium text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors">
+              PowerTeam 페이지 바로 가기
+            </span>
+            <ArrowRight className="w-4 h-4 text-primary" />
+          </div>
+        </a>
       </Card>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -258,7 +302,7 @@ function PowerTeamWorkflowSection() {
         <ResourceCard
           link={{
             title: "BNI 코리아 스토어",
-            description: "BNI 공식 굿즈와 상품을 구매하세요",
+            description: "BNI 코리아의 공식 굿즈 & 챕터 물품을 구매하실 수 있어요 :)",
             url: "https://www.bnikoreastore.com/",
             icon: ShoppingBag,
           }}
@@ -296,15 +340,15 @@ export default function OnboardingPage() {
           <Link href="/welcome_kit" data-testid="link-header-to-welcomekit">
             <div className="group cursor-pointer relative inline-block mb-6">
               <div className="mb-2">
-                <span className="text-4xl md:text-6xl font-serif italic text-foreground block md:inline-block tracking-tight transition-colors duration-200 group-hover:text-[#2171b5]">
+                <span className="text-4xl md:text-6xl font-serif italic text-foreground block md:inline-block tracking-tight transition-colors duration-200 group-hover:text-[#d12031]">
                   Welcome Pack
                 </span>
               </div>
-              <h1 className="text-xl md:text-4xl font-bold text-foreground px-4 break-keep whitespace-nowrap transition-colors duration-200 group-hover:text-[#2171b5]" data-testid="text-page-title">
+              <h1 className="text-xl md:text-4xl font-bold text-foreground px-4 break-keep whitespace-nowrap transition-colors duration-200 group-hover:text-[#d12031]" data-testid="text-page-title">
                 BNI KOREA 멤버 온보딩 키트
               </h1>
               <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-full mt-3 opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 z-20">
-                <span className="inline-flex items-center gap-1.5 bg-[#2171b5] text-white text-sm font-medium px-4 py-2 rounded-full shadow-md whitespace-nowrap">
+                <span className="inline-flex items-center gap-1.5 bg-[#d12031] text-white text-sm font-medium px-4 py-2 rounded-full shadow-md whitespace-nowrap">
                   웰컴팩 구성 살펴보러 갈까요?
                   <span>→</span>
                 </span>
@@ -314,37 +358,99 @@ export default function OnboardingPage() {
           <p className="text-base md:text-lg text-muted-foreground max-w-4xl mx-auto px-6 break-keep md:whitespace-nowrap">
             환영합니다 ! BNI KOREA 멤버로서 활동에 필요한 모든 리소스를 한눈에 확인하세요 !
           </p>
+
+          <a
+            href="https://www.guardian-bnikorea.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block group mt-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-xl"
+            data-testid="banner-guardian-challenge"
+          >
+            <div className="relative overflow-hidden rounded-xl border border-border bg-card px-5 py-6 md:px-6 md:py-8 shadow-sm hover-elevate active-elevate-2 transition-all duration-200">
+              <div className="absolute top-3 right-3 md:top-4 md:right-4 z-10">
+                <Badge className="bg-primary/10 text-primary border-0 text-[10px] md:text-xs font-semibold hover:bg-primary/10">
+                  지금 진행 중인 챌린지
+                </Badge>
+              </div>
+
+              <div className="absolute bottom-3 right-3 md:bottom-4 md:right-4 z-10 inline-flex items-center gap-1 text-xs md:text-sm font-medium text-primary">
+                자세히 보러 가기
+                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+              </div>
+
+              <div className="flex items-center gap-4 md:gap-6 text-left">
+                <div className="w-1/2 flex-shrink-0">
+                  <video
+                    src="https://www.guardian-bnikorea.com/win.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-36 md:h-48 object-cover rounded-lg bg-muted"
+                  />
+                </div>
+
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-1.5">
+                    <Trophy className="w-3.5 h-3.5 text-primary" />
+                    <span className="text-xs font-semibold tracking-wide text-primary">BNI GUARDIAN</span>
+                  </div>
+                  <h3 className="font-serif italic text-2xl md:text-[37px] md:whitespace-nowrap font-bold text-foreground mt-1 leading-tight">
+                    + 1 Member Challenge
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </a>
         </header>
 
         <main className="space-y-12">
           <CategorySection title="필수 시스템" links={essentialSystems} />
           <PowerTeamWorkflowSection />
-          <CategorySection title="커뮤니티 & 챌린지" links={communityLinks} />
+          <CategorySection title="커뮤니티 & 이벤트" links={communityLinks} />
           <CategorySection title="공식 채널" links={officialChannels} />
           <CategorySection title="멤버 지원" links={memberSupportLinks} />
         </main>
 
         <section className="mt-6">
           <Link href="/welcome_kit" data-testid="link-bottom-to-welcomekit">
-            <div className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg cursor-pointer">
-              <Card className="p-6 hover-elevate active-elevate-2 transition-all duration-200">
-                <div className="flex items-center justify-between gap-4">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
-                      <Package className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-medium text-foreground group-hover:text-primary transition-colors">
-                        웰컴팩 구성 자세히 보러가기
-                      </h3>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        BNI 코리아 웰컴팩의 모든 구성품을 자세히 살펴보세요
-                      </p>
-                    </div>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-primary flex-shrink-0 group-hover:translate-x-1 transition-transform" />
+            <div className="block group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-xl">
+              <div className="relative overflow-hidden rounded-xl border border-border bg-card px-5 py-6 md:px-6 md:py-8 shadow-sm hover-elevate active-elevate-2 transition-all duration-200">
+                <div className="absolute top-3 right-3 md:top-4 md:right-4 z-10">
+                  <Badge className="bg-primary/10 text-primary border-0 text-[10px] md:text-xs font-semibold hover:bg-primary/10">
+                    멤버 전용 혜택
+                  </Badge>
                 </div>
-              </Card>
+
+                <div className="absolute bottom-3 right-3 md:bottom-4 md:right-4 z-10 inline-flex items-center gap-1 text-xs md:text-sm font-medium text-primary">
+                  자세히 보러 가기
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                </div>
+
+                <div className="flex items-center gap-4 md:gap-6 text-left">
+                  <div className="w-1/2 flex-shrink-0">
+                    <video
+                      src="/assets/welcome/hero.mp4"
+                      poster="/assets/pouch_out.jpg"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-36 md:h-48 object-cover rounded-lg bg-muted"
+                    />
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-1.5">
+                      <Package className="w-3.5 h-3.5 text-primary" />
+                      <span className="text-xs font-semibold tracking-wide text-primary">BNI Korea Membership Toolkit Package</span>
+                    </div>
+                    <h3 className="font-serif italic text-2xl md:text-[37px] md:whitespace-nowrap font-bold text-foreground mt-1 leading-tight">
+                      Welcome Pack
+                    </h3>
+                  </div>
+                </div>
+              </div>
             </div>
           </Link>
         </section>
@@ -371,7 +477,7 @@ export default function OnboardingPage() {
                 멤버 지원 문의
               </a>
               <a
-                href="https://www.bnikorea.com"
+                href="http://bnikorea.com/ko/index"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-muted-foreground hover:text-foreground focus-visible:text-foreground transition-colors focus:outline-none focus-visible:underline"
