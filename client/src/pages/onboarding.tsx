@@ -447,7 +447,7 @@ export default function OnboardingPage() {
                   <div className="w-1/2 flex-shrink-0">
                     <video
                       src="/assets/welcome/hero.mp4"
-                      poster="/assets/pouch_out.jpg"
+                      poster="/assets/welcome/hero_poster.jpg"
                       autoPlay
                       muted
                       loop

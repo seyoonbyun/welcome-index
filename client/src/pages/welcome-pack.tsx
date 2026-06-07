@@ -121,7 +121,7 @@ export default function WelcomePackPage() {
           <video
             className="pointer-events-none w-full h-auto object-contain md:absolute md:inset-0 md:h-full md:object-cover md:object-center"
             src="/assets/welcome/hero.mp4"
-            poster="/assets/pouch_out.jpg"
+            poster="/assets/welcome/hero_poster.jpg"
             autoPlay
             loop
             muted
