@@ -201,7 +201,7 @@ function PowerTeamWorkflowSection() {
           </a>
           
           <a
-            href="https://docs.google.com/spreadsheets/d/14KZrC6w8BUIFCp2AcLF6Uj36HKXsVQgZOY9_H2-DY18/edit?usp=sharing"
+            href="https://www.powerteam-bnikorea.com/RPI"
             target="_blank"
             rel="noopener noreferrer"
             className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
@@ -232,6 +232,21 @@ function PowerTeamWorkflowSection() {
           </a>
         </div>
         
+        <a
+          href="https://docs.google.com/spreadsheets/d/14KZrC6w8BUIFCp2AcLF6Uj36HKXsVQgZOY9_H2-DY18/edit?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block w-full group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg mb-4"
+          data-testid="link-rpi-realtime-stats"
+        >
+          <div className="p-4 rounded-lg border border-border hover-elevate active-elevate-2 transition-all duration-200 flex items-center justify-center gap-2">
+            <span className="font-medium text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors">
+              BNI 코리아 RPI 실시간 현황
+            </span>
+            <ArrowRight className="w-4 h-4 text-primary" />
+          </div>
+        </a>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <a
             href="https://www.youtube.com/watch?v=cOG550Q77Zk"
@@ -246,7 +261,7 @@ function PowerTeamWorkflowSection() {
               </div>
               <div className="flex-1 min-w-0 flex items-center gap-2">
                 <h4 className="font-medium text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors">
-                  멤버 매뉴얼 바로가기
+                  멤버 매뉴얼 바로보기
                 </h4>
                 <ExternalLink className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
               </div>
@@ -266,7 +281,7 @@ function PowerTeamWorkflowSection() {
               </div>
               <div className="flex-1 min-w-0 flex items-center gap-2">
                 <h4 className="font-medium text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors">
-                  관리자 매뉴얼 바로가기
+                  관리자 매뉴얼 바로보기
                 </h4>
                 <ExternalLink className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
               </div>
@@ -396,7 +411,8 @@ export default function OnboardingPage() {
                     <span className="text-xs font-semibold tracking-wide text-primary">BNI GUARDIAN</span>
                   </div>
                   <h3 className="font-serif italic text-2xl md:text-[37px] md:whitespace-nowrap font-bold text-foreground mt-1 leading-tight">
-                    + 1 Member Challenge
+                    <span className="block md:inline">+ 1 Member</span>{" "}
+                    <span className="block text-right md:inline md:text-left">Challenge</span>
                   </h3>
                 </div>
               </div>
@@ -441,12 +457,13 @@ export default function OnboardingPage() {
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 md:justify-center">
                       <Package className="w-3.5 h-3.5 text-primary" />
-                      <span className="text-xs font-semibold tracking-wide text-primary">BNI Korea Membership Toolkit Package</span>
+                      <span className="text-xs font-semibold tracking-wide text-primary whitespace-nowrap"><span className="hidden md:inline">BNI Korea </span>Membership <span className="hidden md:inline">Toolkit </span>Package</span>
                     </div>
-                    <h3 className="font-serif italic text-2xl md:text-[37px] md:whitespace-nowrap font-bold text-foreground mt-1 leading-tight">
-                      Welcome Pack
+                    <h3 className="font-serif italic text-2xl md:text-[37px] md:whitespace-nowrap md:text-center font-bold text-foreground mt-1 leading-tight">
+                      <span className="block md:inline">Welcome</span>{" "}
+                      <span className="block text-right md:inline md:text-left">Pack</span>
                     </h3>
                   </div>
                 </div>
