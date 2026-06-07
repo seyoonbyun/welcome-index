@@ -472,7 +472,7 @@ export default function OnboardingPage() {
           </Link>
         </section>
 
-        <footer className="mt-16 pt-8 border-t border-border">
+        <footer className="mt-16 pt-8 pb-16 md:pb-0 border-t border-border">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex flex-wrap items-center justify-center gap-6 order-1 md:order-2">
               <Link
