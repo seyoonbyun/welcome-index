@@ -286,3 +286,32 @@
     inset: -1px;
   }
 }
+
+@keyframes step-pop {
+  from {
+    transform: scale(0.985);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.step-active {
+  background-color: hsl(var(--primary) / 0.06) !important;
+  box-shadow: 0 0 0 2px hsl(var(--primary)), 0 0 26px 2px hsl(var(--primary) / 0.4) !important;
+  animation: step-pop 0.25s ease-out;
+}
+
+@keyframes cta-pulse {
+  0% {
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.45);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 10px hsl(var(--primary) / 0);
+  }
+}
+
+.cta-pulse {
+  animation: cta-pulse 2.2s ease-out infinite;
+}

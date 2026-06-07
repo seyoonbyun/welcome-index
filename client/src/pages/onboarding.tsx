@@ -1,14 +1,19 @@
+import { useState, type ReactNode } from "react";
 import { Link } from "wouter";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import PouchCredit from "@/components/pouch-credit";
-import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, Info, ShoppingBag, UserPlus, CheckCircle, MapPin, Package, Home } from "lucide-react";
+import { ExternalLink, CreditCard, Wrench, BarChart3, Trophy, GraduationCap, Globe, MessageCircle, Youtube, Podcast, Instagram, Facebook, Building2, ArrowRight, ArrowDown, Info, ShoppingBag, UserPlus, CheckCircle, MapPin, Package, Home, Users } from "lucide-react";
 
 interface ResourceLink {
   title: string;
-  description: string;
+  description: ReactNode;
   url: string;
   icon: typeof CreditCard;
+  badge?: string;
+  step?: number;
+  popupText?: string;
+  titleClassName?: string;
 }
 
 interface ResourceCategory {
@@ -21,13 +26,13 @@ const essentialSystems: ResourceLink[] = [
     title: "멤버십비 결제",
     description: "BNI 멤버십 비용을 안전하게 결제하세요",
     url: "https://pay.bnikorea.com/",
-    icon: CreditCard,
-  },
+    icon: CreditCard,  },
   {
     title: "BNI Connect Global",
     description: "글로벌 멤버십 커넥트 시스템에 로그인하세요",
     url: "https://www.bniconnectglobal.com/login/?message=",
-    icon: Globe,
+    icon: Globe,    step: 1,
+    popupText: "대표님 성함으로 BNI Connect 계정이 개설되었습니다!\n즐거운 멤버활동을 위해 BNI Connect 계정 등록을 먼저 마무리해주세요!",
   },
 ];
 
@@ -39,8 +44,14 @@ const communityLinks: ResourceLink[] = [
     icon: Trophy,
   },
   {
-    title: "GBC : G글로벌 B즈니스 C위원회",
-    description: "Global Business Commitee",
+    title: "글로벌 비즈니스 위원회",
+    description: (
+      <>
+        <span className="text-[#d12031] font-bold">G</span>lobal{" "}
+        <span className="text-[#d12031] font-bold">B</span>usiness{" "}
+        <span className="text-[#d12031] font-bold">C</span>ommitee
+      </>
+    ),
     url: "https://www.gbc-bnikorea.com/",
     icon: Trophy,
   },
@@ -95,6 +106,18 @@ const officialChannels: ResourceLink[] = [
     url: "https://facebook.com/bnikorea",
     icon: Facebook,
   },
+  {
+    title: "비즈니스 포럼",
+    description: "비즈니스 포럼 일정을 확인하고 참여하세요",
+    url: "https://app.notion.com/p/BNI-KOREA-37839e9f1cf780d5bdc2f05ccf9ccb2f?source=copy_link",
+    icon: Users,
+  },
+  {
+    title: "BNI 코리아 공식 단톡방",
+    description: "BNI 코리아 공식 단톡방에 참여하세요",
+    url: "https://app.notion.com/p/BNI-37839e9f1cf78089a483eaa33a46580f?source=copy_link",
+    icon: MessageCircle,
+  },
 ];
 
 const memberSupportLinks: ResourceLink[] = [
@@ -112,40 +135,130 @@ const memberSupportLinks: ResourceLink[] = [
   },
 ];
 
-function ResourceCard({ link }: { link: ResourceLink }) {
-  const Icon = link.icon;
-  
+function CoachMark({
+  show,
+  text,
+  isLast,
+  nextStepNo,
+  onNext,
+  onEnd,
+}: {
+  show: boolean;
+  text: string;
+  isLast: boolean;
+  nextStepNo: number;
+  onNext: () => void;
+  onEnd: () => void;
+}) {
   return (
-    <a
-      href={link.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
-      data-testid={`link-${link.title.replace(/\s+/g, '-').toLowerCase()}`}
+    <div
+      role="dialog"
+      aria-hidden={!show}
+      className={`absolute left-1/2 -translate-x-1/2 bottom-full mb-3 z-[60] w-[420px] max-w-[88vw] transition-all duration-200 ${
+        show ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-1 invisible pointer-events-none"
+      }`}
+      data-testid="coach-mark"
     >
-      <Card className="p-6 h-full hover-elevate active-elevate-2 transition-all duration-200">
-        <div className="flex items-start gap-4">
-          <div className="flex-shrink-0 w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
-            <Icon className="w-5 h-5 text-primary" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2">
-              <h3 className="text-lg font-medium text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors">
-                {link.title}
-              </h3>
-              <ExternalLink className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
-            </div>
-            <p className="text-sm text-muted-foreground mt-1">
-              {link.description}
-            </p>
-          </div>
+      <div className="relative rounded-xl bg-card border border-primary/30 shadow-2xl p-4 text-left">
+        <p className="text-sm text-foreground leading-relaxed break-keep whitespace-pre-line">{text}</p>
+        <div className="mt-3 flex items-center justify-end">
+          <button
+            type="button"
+            onClick={isLast ? onEnd : onNext}
+            className="inline-flex items-center gap-1 rounded-md bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground hover-elevate active-elevate-2"
+            data-testid={isLast ? "coach-end" : "coach-next"}
+          >
+            {isLast ? "가이드 종료" : `STEP ${nextStepNo} 바로가기`}
+            {!isLast && <ArrowRight className="w-3 h-3" />}
+          </button>
         </div>
-      </Card>
-    </a>
+        <div className="absolute left-1/2 -translate-x-1/2 top-full -translate-y-1/2 w-3 h-3 rotate-45 bg-card border-r border-b border-primary/30" />
+      </div>
+    </div>
   );
 }
 
-function PowerTeamWorkflowSection() {
+function ResourceCard({
+  link,
+  activeStep = false,
+  isLast = false,
+  onNext,
+  onEnd,
+}: {
+  link: ResourceLink;
+  activeStep?: boolean;
+  isLast?: boolean;
+  onNext?: () => void;
+  onEnd?: () => void;
+}) {
+  const Icon = link.icon;
+
+  return (
+    <div
+      id={link.step ? `step-${link.step}` : undefined}
+      className={`relative h-full scroll-mt-28 ${activeStep ? "z-50" : ""}`}
+    >
+      <a
+        href={link.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block h-full group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
+        data-testid={`link-${link.title.replace(/\s+/g, '-').toLowerCase()}`}
+      >
+        <Card className={`p-6 h-full hover-elevate active-elevate-2 transition-all duration-200 ${activeStep ? "step-active" : ""}`}>
+          {link.step && (
+            <div className="mb-3">
+              <Badge className="bg-primary text-primary-foreground border-0 text-[10px] font-semibold hover:bg-primary">
+                신입멤버 온보딩 STEP {link.step}
+              </Badge>
+            </div>
+          )}
+          <div className="flex items-start gap-4">
+            <div className="flex-shrink-0 w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
+              <Icon className="w-5 h-5 text-primary" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2">
+                <h3 className={`${link.titleClassName ?? "text-lg"} font-medium text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors`}>
+                  {link.title}
+                </h3>
+                {link.badge && (
+                  <Badge className="flex-shrink-0 bg-primary/10 text-primary border-0 text-[10px] font-semibold hover:bg-primary/10">
+                    {link.badge}
+                  </Badge>
+                )}
+                <ExternalLink className="w-4 h-4 text-primary opacity-50 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity ml-auto" />
+              </div>
+              <p className="text-sm text-foreground/70 mt-1">
+                {link.description}
+              </p>
+            </div>
+          </div>
+        </Card>
+      </a>
+      {link.popupText && (
+        <CoachMark
+          show={activeStep}
+          text={link.popupText}
+          isLast={isLast}
+          nextStepNo={(link.step ?? 0) + 1}
+          onNext={onNext ?? (() => {})}
+          onEnd={onEnd ?? (() => {})}
+        />
+      )}
+    </div>
+  );
+}
+
+function PowerTeamWorkflowSection({
+  tourStep = 0,
+  onNext,
+  onEnd,
+}: {
+  tourStep?: number;
+  onNext?: () => void;
+  onEnd?: () => void;
+}) {
   return (
     <section>
       <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-2.5 justify-center md:justify-start" data-testid="section-비즈니스-도구">
@@ -157,7 +270,13 @@ function PowerTeamWorkflowSection() {
         비즈니스 도구
       </h2>
       
-      <Card className="p-6 mb-6">
+      <div id="step-2" className={`relative mb-6 scroll-mt-28 ${tourStep === 2 ? "z-50" : ""}`}>
+      <Card className={`p-6 ${tourStep === 2 ? "step-active" : ""}`}>
+        <div className="mb-3">
+          <Badge className="bg-primary text-primary-foreground border-0 text-[10px] font-semibold hover:bg-primary">
+            신입멤버 온보딩 STEP 2
+          </Badge>
+        </div>
         <div className="flex items-start gap-3 mb-6">
           <Info className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
           <div>
@@ -178,7 +297,7 @@ function PowerTeamWorkflowSection() {
           >
             <div className="p-4 rounded-lg border border-border hover-elevate active-elevate-2 transition-all duration-200 h-full">
               <div className="flex items-center gap-3 mb-3">
-                <Badge variant="secondary" className="text-xs font-medium">Step 1</Badge>
+                <Badge className="!bg-[#001A9E] !text-white border-0 text-xs font-medium hover:!bg-[#001A9E]">파워팀 STEP 1</Badge>
                 <span className="text-sm text-muted-foreground">기록하기</span>
               </div>
               <div className="flex items-start gap-3">
@@ -192,7 +311,7 @@ function PowerTeamWorkflowSection() {
                     </h4>
                     <ExternalLink className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
                   </div>
-                  <p className="text-sm text-muted-foreground mt-1">
+                  <p className="text-sm text-foreground/70 mt-1">
                     본인의 활동 성과를 입력하고 기록하세요
                   </p>
                 </div>
@@ -209,7 +328,7 @@ function PowerTeamWorkflowSection() {
           >
             <div className="p-4 rounded-lg border border-border hover-elevate active-elevate-2 transition-all duration-200 h-full">
               <div className="flex items-center gap-3 mb-3">
-                <Badge variant="secondary" className="text-xs font-medium">Step 2</Badge>
+                <Badge className="!bg-[#001A9E] !text-white border-0 text-xs font-medium hover:!bg-[#001A9E]">파워팀 STEP 2</Badge>
                 <span className="text-sm text-muted-foreground">확인하기</span>
               </div>
               <div className="flex items-start gap-3">
@@ -223,7 +342,7 @@ function PowerTeamWorkflowSection() {
                     </h4>
                     <ExternalLink className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
                   </div>
-                  <p className="text-sm text-muted-foreground mt-1">
+                  <p className="text-sm text-foreground/70 mt-1">
                     나와 챕터 전체의 활동 기록을 확인하세요
                   </p>
                 </div>
@@ -304,14 +423,29 @@ function PowerTeamWorkflowSection() {
           </div>
         </a>
       </Card>
-      
+      <CoachMark
+        show={tourStep === 2}
+        text={"이제 PowerTeam에서 나의 활동을 기록해보세요.\n나와 챕터 전체의 성과를 확인하는 시작점입니다."}
+        isLast={false}
+        nextStepNo={3}
+        onNext={onNext ?? (() => {})}
+        onEnd={onEnd ?? (() => {})}
+      />
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <ResourceCard
+          activeStep={tourStep === 3}
+          isLast
+          onNext={onNext}
+          onEnd={onEnd}
           link={{
             title: "비즈니스 트레이닝",
             description: "트레이닝 프로그램을 확인하고 참여하세요",
             url: "https://www.hub-bnikorea.com/BusinessTraining",
             icon: GraduationCap,
+            step: 3,
+            popupText: "BNI 코리아에서는 멤버십 회원 대상, 비즈니스 성장을 위한 실전 MBA 프로그램이 매주 열립니다. 놓치지 마세요 ! :)",
           }}
         />
         <ResourceCard
@@ -327,9 +461,23 @@ function PowerTeamWorkflowSection() {
   );
 }
 
-function CategorySection({ title, links }: { title: string; links: ResourceLink[] }) {
+function CategorySection({
+  title,
+  links,
+  id,
+  tourStep = 0,
+  onNext,
+  onEnd,
+}: {
+  title: string;
+  links: ResourceLink[];
+  id?: string;
+  tourStep?: number;
+  onNext?: () => void;
+  onEnd?: () => void;
+}) {
   return (
-    <section>
+    <section id={id} className="scroll-mt-24">
       <h2 className="text-2xl font-semibold text-foreground mb-6 flex items-center gap-2.5 justify-center md:justify-start" data-testid={`section-${title}`}>
         <svg viewBox="0 0 20 22" width="20" height="22" className="text-[#2171b5]/60 flex-shrink-0" aria-hidden="true">
           <path d="M 8 1.5 Q 8 4 5 5" stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round" />
@@ -340,7 +488,14 @@ function CategorySection({ title, links }: { title: string; links: ResourceLink[
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {links.map((link) => (
-          <ResourceCard key={link.title} link={link} />
+          <ResourceCard
+            key={link.title}
+            link={link}
+            activeStep={!!link.step && tourStep === link.step}
+            isLast={link.step === 3}
+            onNext={onNext}
+            onEnd={onEnd}
+          />
         ))}
       </div>
     </section>
@@ -348,8 +503,46 @@ function CategorySection({ title, links }: { title: string; links: ResourceLink[
 }
 
 export default function OnboardingPage() {
+  const [tourStep, setTourStep] = useState(0);
+  const [completed, setCompleted] = useState(false);
+
+  const scrollToStep = (n: number) => {
+    window.requestAnimationFrame(() => {
+      document.getElementById(`step-${n}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  };
+
+  const startTour = () => {
+    setTourStep(1);
+    scrollToStep(1);
+  };
+
+  const nextStep = () => {
+    const n = tourStep + 1;
+    if (n > 3) {
+      setTourStep(0);
+      setCompleted(true);
+      return;
+    }
+    setTourStep(n);
+    scrollToStep(n);
+  };
+
+  const endTour = () => {
+    setTourStep(0);
+    setCompleted(true);
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      {tourStep > 0 && (
+        <div
+          className="fixed inset-0 z-40 bg-black/40 transition-opacity duration-200"
+          onClick={endTour}
+          data-testid="tour-overlay"
+          aria-hidden="true"
+        />
+      )}
       <div className="relative max-w-5xl mx-auto px-4 py-8 md:px-8 md:py-16">
         <nav className="absolute top-4 right-4 md:top-6 md:right-8 z-50 flex items-center gap-1">
           <Link
@@ -438,9 +631,23 @@ export default function OnboardingPage() {
           </a>
         </header>
 
+        <div className="mb-12">
+          <button
+            type="button"
+            onClick={startTour}
+            data-testid="button-start-here"
+            className={`group flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 sm:px-6 py-3 text-xs sm:text-base md:text-lg font-semibold text-primary-foreground shadow-lg shadow-primary/30 hover-elevate active-elevate-2 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 break-keep whitespace-nowrap ${
+              tourStep === 0 && !completed ? "cta-pulse" : ""
+            }`}
+          >
+            {completed ? "온보딩 가이드 다시 보기" : "신규 멤버가 먼저 확인해야 할 툴 3단계 확인하기!"}
+            <ArrowDown className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
+          </button>
+        </div>
+
         <main className="space-y-12">
-          <CategorySection title="필수 시스템" links={essentialSystems} />
-          <PowerTeamWorkflowSection />
+          <CategorySection title="필수 시스템" links={essentialSystems} id="essential-systems" tourStep={tourStep} onNext={nextStep} onEnd={endTour} />
+          <PowerTeamWorkflowSection tourStep={tourStep} onNext={nextStep} onEnd={endTour} />
           <CategorySection title="커뮤니티 & 이벤트" links={communityLinks} />
           <CategorySection title="공식 채널" links={officialChannels} />
           <CategorySection title="멤버 지원" links={memberSupportLinks} />
