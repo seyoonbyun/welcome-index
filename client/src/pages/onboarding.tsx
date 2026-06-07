@@ -367,7 +367,7 @@ function PowerTeamWorkflowSection({
               </div>
               <div className="flex-1 min-w-0 flex items-center gap-2">
                 <h4 className="font-medium text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors">
-                  멤버 매뉴얼 바로보기
+                  파워팀 멤버 매뉴얼 바로보기
                 </h4>
                 <ExternalLink className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
               </div>
@@ -387,7 +387,7 @@ function PowerTeamWorkflowSection({
               </div>
               <div className="flex-1 min-w-0 flex items-center gap-2">
                 <h4 className="font-medium text-foreground group-hover:text-primary group-focus-visible:text-primary transition-colors">
-                  관리자 매뉴얼 바로보기
+                  파워팀 관리자 매뉴얼 바로보기
                 </h4>
                 <ExternalLink className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity" />
               </div>
