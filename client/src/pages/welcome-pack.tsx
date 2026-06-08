@@ -21,14 +21,10 @@ const galleryImages = [
   "/assets/welcome/pouch_back.jpg",
 ];
 
-const galleryLabels = ["외부 앞", "외부 뒤"];
-
 const interiorImages = [
   "/assets/welcome/pouch_inside1.jpg",
   "/assets/welcome/pouch_inside2.jpg",
 ];
-
-const interiorLabels = ["내부 1", "내부 2"];
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -285,38 +281,35 @@ export default function WelcomePackPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
                 />
-                {galleryImages.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevImage}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors"
-                    >
-                      <ChevronLeft className="w-6 h-6" />
-                    </button>
-                    <button
-                      onClick={nextImage}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors"
-                    >
-                      <ChevronRight className="w-6 h-6" />
-                    </button>
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm">
-                      {galleryLabels[currentImageIndex] ?? ""}
-                    </div>
-                  </>
-                )}
               </div>
               {galleryImages.length > 1 && (
-                <div className="flex justify-center gap-2 mt-4">
-                  {galleryImages.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => goToImage(index)}
-                      className={`w-2 h-2 rounded-full transition-all ${
-                        index === currentImageIndex ? "bg-bni-red w-8" : "bg-gray-300"
-                      }`}
-                      aria-label={`이미지 ${index + 1}로 이동`}
-                    />
-                  ))}
+                <div className="flex items-center justify-center gap-3 mt-4">
+                  <button
+                    onClick={prevImage}
+                    className="text-gray-400 hover:text-bni-red transition-colors"
+                    aria-label="이전 이미지"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <div className="flex items-center justify-center gap-2">
+                    {galleryImages.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => goToImage(index)}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          index === currentImageIndex ? "bg-bni-red w-8" : "bg-gray-300"
+                        }`}
+                        aria-label={`이미지 ${index + 1}로 이동`}
+                      />
+                    ))}
+                  </div>
+                  <button
+                    onClick={nextImage}
+                    className="text-gray-400 hover:text-bni-red transition-colors"
+                    aria-label="다음 이미지"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
                 </div>
               )}
             </motion.div>
@@ -379,38 +372,35 @@ export default function WelcomePackPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
                 />
-                {interiorImages.length > 1 && (
-                  <>
-                    <button
-                      onClick={prevInterior}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors"
-                    >
-                      <ChevronLeft className="w-6 h-6" />
-                    </button>
-                    <button
-                      onClick={nextInterior}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors"
-                    >
-                      <ChevronRight className="w-6 h-6" />
-                    </button>
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm">
-                      {interiorLabels[interiorIndex] ?? ""}
-                    </div>
-                  </>
-                )}
               </div>
               {interiorImages.length > 1 && (
-                <div className="flex justify-center gap-2 mt-4">
-                  {interiorImages.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => goToInterior(index)}
-                      className={`w-2 h-2 rounded-full transition-all ${
-                        index === interiorIndex ? "bg-bni-red w-8" : "bg-gray-300"
-                      }`}
-                      aria-label={`내부 이미지 ${index + 1}로 이동`}
-                    />
-                  ))}
+                <div className="flex items-center justify-center gap-3 mt-4">
+                  <button
+                    onClick={prevInterior}
+                    className="text-gray-400 hover:text-bni-red transition-colors"
+                    aria-label="이전 이미지"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <div className="flex items-center justify-center gap-2">
+                    {interiorImages.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => goToInterior(index)}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          index === interiorIndex ? "bg-bni-red w-8" : "bg-gray-300"
+                        }`}
+                        aria-label={`내부 이미지 ${index + 1}로 이동`}
+                      />
+                    ))}
+                  </div>
+                  <button
+                    onClick={nextInterior}
+                    className="text-gray-400 hover:text-bni-red transition-colors"
+                    aria-label="다음 이미지"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
                 </div>
               )}
             </motion.div>
