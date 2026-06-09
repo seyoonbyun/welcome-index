@@ -56,6 +56,18 @@ const communityLinks: ResourceLink[] = [
     icon: Trophy,
   },
   {
+    title: "비즈니스 포럼",
+    description: "비즈니스 포럼 일정을 확인하고 참여하세요",
+    url: "https://app.notion.com/p/BNI-KOREA-37839e9f1cf780d5bdc2f05ccf9ccb2f?source=copy_link",
+    icon: Users,
+  },
+  {
+    title: "BNI 코리아 공식 단톡방",
+    description: "BNI 코리아 공식 단톡방에 참여하세요",
+    url: "https://app.notion.com/p/BNI-37839e9f1cf78089a483eaa33a46580f?source=copy_link",
+    icon: MessageCircle,
+  },
+  {
     title: "포럼 스탬프",
     description: "Director & Ambassador 대상 : DnA 포럼에 출석하고 스토어 포인트는 덤 !",
     url: "https://www.checkin-bnikorea.com/",
@@ -106,18 +118,6 @@ const officialChannels: ResourceLink[] = [
     url: "https://facebook.com/bnikorea",
     icon: Facebook,
   },
-  {
-    title: "비즈니스 포럼",
-    description: "비즈니스 포럼 일정을 확인하고 참여하세요",
-    url: "https://app.notion.com/p/BNI-KOREA-37839e9f1cf780d5bdc2f05ccf9ccb2f?source=copy_link",
-    icon: Users,
-  },
-  {
-    title: "BNI 코리아 공식 단톡방",
-    description: "BNI 코리아 공식 단톡방에 참여하세요",
-    url: "https://app.notion.com/p/BNI-37839e9f1cf78089a483eaa33a46580f?source=copy_link",
-    icon: MessageCircle,
-  },
 ];
 
 const memberSupportLinks: ResourceLink[] = [
@@ -130,7 +130,7 @@ const memberSupportLinks: ResourceLink[] = [
   {
     title: "본사 위치 안내",
     description: "BNI Korea 본사 오시는 길",
-    url: "https://map.naver.com/p/directions/-/14142748.3697468,4515149.9521428,%EB%B9%84%EC%97%94%EC%95%84%EC%9D%B4%EC%BD%94%EB%A6%AC%EC%95%84,1797861143,PLACE_POI/-/transit?c=15.00,0,0,0,dh",
+    url: "https://map.naver.com/p/search/%EB%B9%84%EC%97%94%EC%95%84%EC%9D%B4%EC%BD%94%EB%A6%AC%EC%95%84/place/1797861143?placePath=/home?bk_query=%EB%B9%84%EC%97%94%EC%95%84%EC%9D%B4%EC%BD%94%EB%A6%AC%EC%95%84&entry=pll&from=nx&fromNxList=true&fromPanelNum=2&timestamp=202606092134&locale=ko&svcName=map_pcv5&searchText=%EB%B9%84%EC%97%94%EC%95%84%EC%9D%B4%EC%BD%94%EB%A6%AC%EC%95%84&searchType=place&c=15.00,0,0,0,dh",
     icon: MapPin,
   },
 ];
@@ -207,7 +207,7 @@ function ResourceCard({
         className="block h-full group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
         data-testid={`link-${link.title.replace(/\s+/g, '-').toLowerCase()}`}
       >
-        <Card className={`p-6 h-full hover-elevate active-elevate-2 transition-all duration-200 ${activeStep ? "step-active" : ""}`}>
+        <Card className={`p-6 h-full flex flex-col hover-elevate active-elevate-2 transition-all duration-200 ${activeStep ? "step-active" : ""}`}>
           {link.step && (
             <div className="mb-3">
               <Badge className="bg-primary text-primary-foreground border-0 text-[10px] font-semibold hover:bg-primary">
@@ -215,7 +215,7 @@ function ResourceCard({
               </Badge>
             </div>
           )}
-          <div className="flex items-start gap-4">
+          <div className={`flex gap-4 ${link.step ? "items-start" : "flex-1 items-center"}`}>
             <div className="flex-shrink-0 w-10 h-10 rounded-md bg-primary/10 flex items-center justify-center">
               <Icon className="w-5 h-5 text-primary" />
             </div>
