@@ -234,7 +234,7 @@ export default function WelcomePackPage() {
                 letterSpacing: "0.1em",
               }}
             >
-              Professional Organizer
+              BNI KOREA EDITION : Professional Organizer
             </p>
             <h2
               className="mb-4"
