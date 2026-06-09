@@ -49,7 +49,7 @@ const communityLinks: ResourceLink[] = [
       <>
         <span className="text-[#d12031] font-bold">G</span>lobal{" "}
         <span className="text-[#d12031] font-bold">B</span>usiness{" "}
-        <span className="text-[#d12031] font-bold">C</span>ommitee
+        <span className="text-[#d12031] font-bold">C</span>ommittee
       </>
     ),
     url: "https://www.gbc-bnikorea.com/",
