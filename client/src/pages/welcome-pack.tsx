@@ -4,7 +4,7 @@ import { Link } from "wouter";
 import WelcomePackHeader from "@/components/welcome-pack-header";
 import PouchCredit from "@/components/pouch-credit";
 import { Button } from "@/components/ui/button";
-import { ArrowUp, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
+import { ArrowUp, ChevronLeft, ChevronRight, ChevronDown, Info } from "lucide-react";
 
 // 이미지 경로는 public 폴더 기준
 const images = {
@@ -261,6 +261,22 @@ export default function WelcomePackPage() {
             >
               준비된 사람은 오거나이저부터 다릅니다. BNI 프로페셔널 오거나이저는 필요한 도구를 정돈하는 수납 아이템을 넘어, 미팅 전의 준비성과 현장에서의 전문성을 가장 먼저 보여주는 비즈니스 에센셜입니다.
             </p>
+            <div
+              className="max-w-3xl mx-auto mt-6 inline-flex items-center gap-2 rounded-full border border-bni-red/20 bg-bni-red/5 px-4 py-2"
+            >
+              <Info className="w-4 h-4 text-bni-red flex-shrink-0" />
+              <p
+                style={{
+                  fontFamily: '"Pretendard Variable", Pretendard, sans-serif',
+                  fontSize: "14px",
+                  fontWeight: 400,
+                  lineHeight: "20px",
+                  color: "rgb(211, 18, 18)",
+                }}
+              >
+                본 웰컴팩은 신규 멤버의 빠른 성공을 돕는 온보딩 툴로, 신규 런칭 챕터에 한해 제공됩니다.
+              </p>
+            </div>
           </motion.div>
 
           <div className="max-w-[79.2rem] mx-auto mb-20">
