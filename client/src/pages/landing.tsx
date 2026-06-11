@@ -89,11 +89,11 @@ export default function LandingPage() {
           <span className="block md:inline">BNI KOREA</span>
           <span className="block md:inline"> 멤버 온보딩 키트</span>
         </h1>
-        <p className="text-lg text-muted-foreground mb-4" style={{ fontFamily: '"Pretendard Variable", Pretendard, sans-serif' }}>
+        <p className="text-sm md:text-lg text-muted-foreground mb-4" style={{ fontFamily: '"Pretendard Variable", Pretendard, sans-serif' }}>
           QR 코드를 클릭하여 온보딩 리소스를 확인하세요
         </p>
 
-        <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 mb-8">
+        <div className="inline-flex items-center gap-2 rounded-xl md:rounded-full border border-primary/20 bg-primary/5 px-4 py-2 mb-8">
           <Info className="w-4 h-4 text-primary flex-shrink-0" />
           <p className="text-sm text-primary" style={{ fontFamily: '"Pretendard Variable", Pretendard, sans-serif' }}>
             본 웰컴팩은 신규 멤버의 빠른 성공을 돕는 온보딩 툴로, 신규 런칭 챕터에 한해 제공됩니다.
